@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 
-export default function navbar (){
-    return 
-    <nav>
-        <button>Viewes</button>
-        <button>Favorite</button>
-        <button>Highlight</button>
-    </nav>
+export default function Nav (){
+    return (
+    <nav id="navbar">
+        <button className="navbar__buttons">Views</button>
+        <button className="navbar__buttons">Favorites</button>
+        <button className="navbar__buttons">Highlight</button>
+    </nav>)
 }
