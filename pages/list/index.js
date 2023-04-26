@@ -16,6 +16,7 @@ export default function List({ data }) {
               />
             </div>
             <div className="artTile__information">
+                
               <p>
                 Name of artwork:&nbsp;<em>{art.name}</em>
               </p>
