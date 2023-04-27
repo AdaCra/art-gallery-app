@@ -7,7 +7,7 @@ export default function List({ data }) {
       {data.map((art) => {
         return (
           <section key={art.slug}>
-            <div className="artTile__artwork">
+            <div className="artList__artwork">
               <Image
                 src={art.imageSource}
                 alt={art.name}
@@ -15,12 +15,12 @@ export default function List({ data }) {
                 height={art.dimensions.height / 10}
               />
             </div>
-            <div className="artTile__information">
+            <div className="artList__information">
                 
-              <p>
+              <p className="artList__information__art">
                 Name of artwork:&nbsp;<em>{art.name}</em>
               </p>
-              <p>
+              <p className="artList__information__artist">
                 Artist:&nbsp;<em>{art.artist}</em>
               </p>
             </div>

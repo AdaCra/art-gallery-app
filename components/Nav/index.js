@@ -2,12 +2,15 @@ import { useState } from "react";
 import Link from "next/link";
 import Button from "../Button";
 
-export default function Nav() {
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
+export default function Nav({ data }) {
+  const [currentView, setCurrentView] = useState(true);
+  const toggleViewLink = () => {
+    setCurrentView(!currentView);
   };
+  function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
   return (
     <nav id="navbar">
       <ul>
@@ -16,26 +19,21 @@ export default function Nav() {
             Home
           </Link>
         </li>
-        <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-          <span className="navbar__dropDown">Views</span>
-          {showDropdown && (
-            <ul className="navbar__dropDown__menu">
-              <li>
-                <Link className="navbar__link" href="/List">
-                  List View
-                </Link>
-              </li>
-              <li>
-                <Link className="navbar__link" href="/Spotlight/0">
-                  Spotlight View
-                </Link>
-              </li>
-            </ul>
-          )}
+        <li>
+          <Link
+            onClick={toggleViewLink}
+            className="navbar__link"
+            href={currentView ? "/List" : `/Tile/${data[1].slug}`}
+          >
+            {currentView ? "List View" : "Tile View"}
+          </Link>
         </li>
         <li>
-          <Link className="navbar__link" href={`/Spotlight/0`}>
-            Highlight
+          <Link
+            className="navbar__link"
+            href="/Spotlight/"
+          >
+            Spotlight
           </Link>
         </li>
         <li>
