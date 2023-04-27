@@ -23,9 +23,6 @@ You can then use the following commands:
 
 > 💡 This project requires a bundler. You can use `npm run dev` to start the development server. You can then view the project in the browser at `http://localhost:3000`. The Live Preview Extension for Visual Studio Code will **not** work for this project.
 
-
-
-
 # Recap Project 5: Art Gallery App
 
 In this recap project you will create an art gallery app.
@@ -76,19 +73,19 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] All art pieces are displayed as a list 🖼️
-- [ ] Each art piece's image is displayed 🖼️
-- [ ] Each art piece's title is displayed 🖼️
-- [ ] Each art piece's artist is displayed 🖼️
+- [x] All art pieces are displayed as a list 🖼️
+- [x] Each art piece's image is displayed 🖼️
+- [x] Each art piece's title is displayed 🖼️
+- [x] Each art piece's artist is displayed 🖼️
 
 #### Tasks
 
-- [ ] Fetch all art pieces with `SWR` in `pages/index.js`
-- [ ] Create the component `ArtPieces` to render a list
-- [ ] `ArtPieces` props: `pieces`
-- [ ] Create the component `ArtPiecePreview`
-- [ ] `ArtPiecePreview` props: `image`, `title`, `artist`
-- [ ] All acceptance criteria marked with 🖼️ are covered by component testing
+- [x] Fetch all art pieces with `SWR` in `pages/index.js`
+- [x] Create the component `ArtPieces` to render a list
+- [x] `ArtPieces` props: `pieces`
+- [x] Create the component `ArtPiecePreview`
+- [] `ArtPiecePreview` props: `image`, `title`, `artist`
+- [x] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
 
@@ -104,15 +101,15 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] One art piece is picked at random to show as a spotlight piece
-- [ ] The art piece image is displayed 🖼️
-- [ ] The art piece artist is displayed 🖼️
+- [x] One art piece is picked at random to show as a spotlight piece
+- [x] The art piece image is displayed 🖼️
+- [x] The art piece artist is displayed 🖼️
 
 #### Tasks
 
-- [ ] Write function to pick one art piece [at random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#examples)
-- [ ] Create the component `Spotlight`
-- [ ] `Spotlight` props: `image`, `artist`
+- [x] Write function to pick one art piece [at random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#examples)
+- [x] Create the component `Spotlight`
+- [x] `Spotlight` props: `image`, `artist`
 - [ ] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
@@ -129,18 +126,18 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] A navigation link labeled "Spotlight" is displayed 🖼️
-- [ ] A navigation link labeled "Pieces" is displayed 🖼️
-- [ ] Clicking "Spotlight" shows the SpotlightPage
-- [ ] Clicking "Pieces" shows the ArtPiecesPage
+- [x] A navigation link labeled "Spotlight" is displayed 🖼️
+- [x] A navigation link labeled "Pieces" is displayed 🖼️
+- [x] Clicking "Spotlight" shows the SpotlightPage
+- [x] Clicking "Pieces" shows the ArtPiecesPage
 
 #### Tasks
 
-- [ ] Move the data fetching logic to `pages/_app`
-- [ ] Find a solution for global state handling to have the art pieces available on all pages
-- [ ] Adapt the page `pages/index`: rename the function to `SpotlightPage` and have it render only the `Spotlight` component
-- [ ] Create the page `pages/art-pieces/index` that renders the `ArtPieces` component
-- [ ] Create the component `Navigation` that renders all navigation links
+- [x] Move the data fetching logic to `pages/_app`
+- [x] Find a solution for global state handling to have the art pieces available on all pages
+- [x] Adapt the page `pages/index`: rename the function to `SpotlightPage` and have it render only the `Spotlight` component
+- [x] Create the page `pages/art-pieces/index` that renders the `ArtPieces` component
+- [x] Create the component `Navigation` that renders all navigation links
 - [ ] Create the component `Layout` that renders the `Navigation` component
 - [ ] Apply the `Layout` component in `pages/_app`
 - [ ] All acceptance criteria marked with 🖼️ are covered by component testing
@@ -159,22 +156,22 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] Clicking an art piece from the list shows the detail page
-- [ ] The art piece image is displayed 🖼️
-- [ ] The art piece title is displayed 🖼️
-- [ ] The art piece artist is displayed 🖼️
-- [ ] The art piece year is displayed 🖼️
-- [ ] The art piece genre is displayed 🖼️
-- [ ] A back-button is displayed 🖼️
-- [ ] Clicking the back-button shows the list view
+- [x] Clicking an art piece from the list shows the detail page
+- [x] The art piece image is displayed 🖼️
+- [x] The art piece title is displayed 🖼️
+- [x] The art piece artist is displayed 🖼️
+- [x] The art piece year is displayed 🖼️
+- [x] The art piece genre is displayed 🖼️
+- [x] A back-button is displayed 🖼️
+- [x] Clicking the back-button shows the list view
 
 #### Tasks
 
-- [ ] Create the component `ArtPieceDetails`
-- [ ] `ArtPieceDetails` props: `image`, `title`, `artist`, `year`, `genre`
-- [ ] Create the page `pages/art-pieces/[slug]` that renders `ArtPieceDetails`
-- [ ] Read the query parameter `slug` from `next/router`
-- [ ] Use the `slug` to find the art piece to display
+- [x] Create the component `ArtPieceDetails`
+- [x] `ArtPieceDetails` props: `image`, `title`, `artist`, `year`, `genre`
+- [x] Create the page `pages/art-pieces/[slug]` that renders `ArtPieceDetails`
+- [x] Read the query parameter `slug` from `next/router`
+- [x] Use the `slug` to find the art piece to display
 - [ ] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
@@ -346,13 +343,13 @@ export default function App({ Component, pageProps }) {
 
 #### Acceptance Criteria
 
-- [ ] The art piece detail page shows a list of all colors used in the image
+- [x] The art piece detail page shows a list of all colors used in the image
 - [ ] The colors may be displayed as circles, squares, ...
 
 #### Tasks
 
-- [ ] Pass the `colors` given by the API to the `ArtPieceDetails` component 🖼️
-- [ ] Use the color hex-code in a styled component to render an element with this color as background
+- [x] Pass the `colors` given by the API to the `ArtPieceDetails` component 🖼️
+- [x] Use the color hex-code in a styled component to render an element with this color as background
 - [ ] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---

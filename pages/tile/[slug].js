@@ -20,7 +20,7 @@ export default function Tile({ data }) {
           previous
         </button>
         <div className="artTile__artwork">
-          <ArtPieces art={currentArt} imageScale={800} />
+          <ArtPieces pieces={currentArt} imageScale={800} />
         </div>
         <button
           onClick={() => {
