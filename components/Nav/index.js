@@ -1,15 +1,11 @@
 import { useState } from "react";
 import Link from "next/link";
-import Button from "../Button";
 
 export default function Nav({ data }) {
   const [currentView, setCurrentView] = useState(true);
   const toggleViewLink = () => {
     setCurrentView(!currentView);
   };
-  function getRandomElement(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
 
   return (
     <nav id="navbar">
@@ -23,16 +19,13 @@ export default function Nav({ data }) {
           <Link
             onClick={toggleViewLink}
             className="navbar__link"
-            href={currentView ? "/List" : `/Tile/${data[1].slug}`}
+            href={currentView ? "/list" : `/tile/${data[1].slug}`}
           >
             {currentView ? "List View" : "Tile View"}
           </Link>
         </li>
         <li>
-          <Link
-            className="navbar__link"
-            href="/Spotlight/"
-          >
+          <Link className="navbar__link" href="/spotlight/">
             Spotlight
           </Link>
         </li>
@@ -42,7 +35,7 @@ export default function Nav({ data }) {
           </button>
         </li>
         <li>
-          <Link className="navbar__link" href={"/About"}>
+          <Link className="navbar__link" href={"/about"}>
             About
           </Link>
         </li>
