@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Tiles({ data }) {
+export default function Tile({ data }) {
   const router = useRouter();
   const { slug } = router.query;
   const currentArt = data.find((art) => art.slug === slug);
