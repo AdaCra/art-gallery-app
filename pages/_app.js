@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR, { SWRConfig } from "swr";
 import React from "react";
+import Heading from "../components/Heading/index.js";
+import Nav from "../components/nav";
+import Footer from "../components/Footer";
+import useRouter from "next/router";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -21,31 +25,20 @@ const fetcher = async (url) => {
 };
 
 export default function App({ Component, pageProps }) {
+
   const { data, error, isLoading, mutate } = useSWR(URL, fetcher);
   if (error) return <h2>Failed to load</h2>;
   if (isLoading) return <h2>Loading...</h2>;
+
   return (
     <>
-      <h1>Gallery-App</h1>
-      <p>nav</p>
       {console.log(data)}
       <GlobalStyle />
+      <Heading />
+      <Nav data={data}/>
       <Component {...pageProps} data={data} />
-      {data.map((art) => {
-        return (
-          <section key={art.slug}>
-            <Image
-              src={art.imageSource}
-              alt={art.name}
-              width={art.dimensions.width / 10}
-              height={art.dimensions.height / 10}
-            />
-            <h3>Name of artwork:{art.name}</h3>
-            <h3>Artist:{art.artist}</h3>
-          </section>
-        );
-      })}
-      <p>footer</p>
+
+      <Footer />
     </>
   );
 }
