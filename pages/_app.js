@@ -1,10 +1,12 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import React from "react";
-import { useState } from "react";
 import Heading from "../components/Heading/index.js";
 import Nav from "../components/nav";
 import Footer from "../components/Footer";
+import { useState } from "react";
+import { artPiecesEntries } from "../lib/localStoreageTemplate";
+import useLocalStorageState from "use-local-storage-state";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -19,20 +21,52 @@ const fetcher = async (url) => {
   return res.json();
 };
 
-
-
 export default function App({ Component, pageProps }) {
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    {
+      defaultValue: artPiecesEntries,
+    }
+  );
+
   const { data, error, isLoading, mutate } = useSWR(URL, fetcher);
   if (error) return <h2>Failed to load</h2>;
   if (isLoading) return <h2>Loading...</h2>;
 
+  function handleToggleFavorite(slug) {
+    const pieceToUpdate = artPiecesInfo.find(
+      (artPiece) => artPiece.slug === slug
+    );
+    if (pieceToUpdate) {
+      setArtPiecesInfo(
+        artPiecesInfo.map((artPiece) =>
+          artPiece.slug === slug
+            ? { ...artPiece, isFavorite: !artPiece.isFavorite }
+            : artPiece
+        )
+      );
+    } else {
+      const newArtPiece = {
+        slug: slug,
+        isFavorite: true,
+        comments: [],
+      };
+      setArtPiecesInfo([...artPiecesInfo, newArtPiece]);
+    }
+  }
   return (
     <>
-      {console.log(data)}
+      {console.log(artPiecesInfo)}
+      {/* {console.log(data)} */}
       <GlobalStyle />
       <Heading />
       <Nav data={data} />
-      <Component {...pageProps} data={data} />
+      <Component
+        {...pageProps}
+        data={data}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={handleToggleFavorite}
+      />
 
       <Footer />
     </>

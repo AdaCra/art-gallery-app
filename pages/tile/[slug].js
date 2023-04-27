@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 
 import ArtPieces from "../../components/ArtPieces";
 
-export default function Tile({ data }) {
+export default function Tile({ data, artPiecesInfo}) {
   const router = useRouter();
   const { slug } = router.query;
   const currentArt = data.find((art) => art.slug === slug);
@@ -20,7 +20,7 @@ export default function Tile({ data }) {
           previous
         </button>
         <div className="artTile__artwork">
-          <ArtPieces pieces={currentArt} imageScale={800} />
+          <ArtPieces pieces={currentArt} imageScale={800} artPiecesInfo={artPiecesInfo}/>
         </div>
         <button
           onClick={() => {
