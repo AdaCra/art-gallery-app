@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function ArtPieceDetails({ currentArt }) {
+  const router = useRouter();
+
   return (
     <>
       <section>
@@ -27,24 +30,24 @@ export default function ArtPieceDetails({ currentArt }) {
             Genre:&nbsp;<em>{currentArt.genre}</em>
           </p>
         </div>
-       {console.log(currentArt.colors)}
+        {console.log(currentArt.colors)}
         <div>
           {currentArt.colors.map((color, index) => {
-            return(
-            <div key={index}
-              style={{
-                backgroundColor: color,
-                width: "300px",
-                height: "100px",
-              }}
-            >
-              </div>
-              );
+            return (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: color,
+                  width: "150px",
+                  height: "30px",
+                }}
+              ></div>
+            );
           })}
         </div>
+        <button onClick={() => router.back()}>Go Back</button>
+        <button onClick={() => router.push("/list")}>Go to List</button>
       </section>
     </>
   );
 }
-//              {/* <span>lkansfkjabsdmabsfma</span> */}
-

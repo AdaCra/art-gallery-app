@@ -1,11 +1,9 @@
-import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Nav({ data }) {
-  const [currentView, setCurrentView] = useState(true);
-  const toggleViewLink = () => {
-    setCurrentView(!currentView);
-  };
+  const router = useRouter();
+  const currentUrl = router.asPath;
 
   return (
     <nav id="navbar">
@@ -17,11 +15,16 @@ export default function Nav({ data }) {
         </li>
         <li>
           <Link
-            onClick={toggleViewLink}
             className="navbar__link"
-            href={currentView ? "/list" : `/tile/${data[1].slug}`}
+            href={
+              currentUrl === "/" || currentUrl.includes("/tile")
+                ? "/list"
+                : `/tile/${data[0].slug}`
+            }
           >
-            {currentView ? "List View" : "Tile View"}
+            {currentUrl === "/" || currentUrl.includes("/tile")
+              ? "Pieces List View"
+              : "Pieces Tile View"}
           </Link>
         </li>
         <li>
@@ -30,9 +33,9 @@ export default function Nav({ data }) {
           </Link>
         </li>
         <li>
-          <button id="navbar__favouritesButton" className="navbar__link">
+          <p id="navbar__favouritesButton" className="navbar__link">
             Toggle Favourites
-          </button>
+          </p>
         </li>
         <li>
           <Link className="navbar__link" href={"/about"}>
@@ -43,4 +46,3 @@ export default function Nav({ data }) {
     </nav>
   );
 }
-""
