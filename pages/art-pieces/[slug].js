@@ -1,15 +1,16 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import ArtPieceDetails from "../../components/ArtPieceDetails";
 
-export default function ArtPieceDetails({ data }) {
+export default function ArtPieceDetail({ data }) {
   const router = useRouter();
   const { slug } = router.query;
   const currentArt = data.find((art) => art.slug === slug);
   const currentIndex = data.indexOf(currentArt);
   return (
     <>
-      <section key={currentArt.slug}>
+      {/* <section>
         <div className="artPieceDetails__artwork">
           <Image
             src={currentArt.imageSource}
@@ -32,7 +33,8 @@ export default function ArtPieceDetails({ data }) {
             Genre:&nbsp;<em>{currentArt.genre}</em>
           </p>
         </div>
-      </section>
+      </section> */}
+      <ArtPieceDetails currentArt={currentArt}/>
     </>
   );
 }

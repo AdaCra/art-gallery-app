@@ -9,7 +9,7 @@ export default function ArtPieces({ art, imageScale }) {
         <Link href={`/art-pieces/${art.slug}`}>
           <Image
             src={art.imageSource}
-            alt={art.name}
+            alt={art.name} 
             width={art.dimensions.width / imageWidthRatio}
             height={ imageScale}
           />  

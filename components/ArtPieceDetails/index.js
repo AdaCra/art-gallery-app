@@ -1,21 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ArtPieceDetails({ data }) {
-  const artpiecedetails = data[Math.floor(Math.random() * data.length)];
-
+export default function ArtPieceDetails({ currentArt }) {
   return (
     <>
       <section>
-        <div className="artPieceDetail__artwork">
+        <div className="artPieceDetails__artwork">
           <Image
-            src={artpiecedetails.imageSource}
-            alt={artpiecedetails.name}
-            width={artpiecedetails.dimensions.width / 3}
-            height={artpiecedetails.dimensions.height / 3}
+            src={currentArt.imageSource}
+            alt={currentArt.name}
+            width={currentArt.dimensions.width / 3}
+            height={currentArt.dimensions.height / 3}
           />
         </div>
-        <div className="artPieceDetail__information">
+        <div className="artPieceDetails__information">
           <p>
             Name of artwork:&nbsp;<em>{currentArt.name}</em>
           </p>
@@ -29,7 +27,24 @@ export default function ArtPieceDetails({ data }) {
             Genre:&nbsp;<em>{currentArt.genre}</em>
           </p>
         </div>
+       {console.log(currentArt.colors)}
+        <div>
+          {currentArt.colors.map((color, index) => {
+            return(
+            <div key={index}
+              style={{
+                backgroundColor: color,
+                width: "300px",
+                height: "100px",
+              }}
+            >
+              </div>
+              );
+          })}
+        </div>
       </section>
     </>
   );
 }
+//              {/* <span>lkansfkjabsdmabsfma</span> */}
+
