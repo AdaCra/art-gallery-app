@@ -1,35 +1,35 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
-import Link from "next/link";
+
+import ArtPieces from "../../components/ArtPieces";
 
 export default function Tile({ data }) {
   const router = useRouter();
   const { slug } = router.query;
   const currentArt = data.find((art) => art.slug === slug);
-  const currentIndex = data.indexOf(currentArt)
+  const currentIndex = data.indexOf(currentArt);
+  const nextArt = currentIndex === data.length - 1 ? 0 : currentIndex + 1;
+  const previousArt = currentIndex === 0 ? data.length - 1 : currentIndex - 1;
   return (
     <>
-      
-          <section key={currentArt.slug}>
-            <div className="artTile__artwork">
-              <Image
-                src={currentArt.imageSource}
-                alt={currentArt.name}
-                width={currentArt.dimensions.width / 3}
-                height={currentArt.dimensions.height / 3}
-              />
-            </div>
-            <div className="artTile__information">
-              <p>
-                Name of artwork:&nbsp;<em>{currentArt.name}</em>
-              </p>
-              <p>
-                Artist:&nbsp;<em>{currentArt.artist}</em>
-              </p>
-            </div>
-          </section>
-        
-      
+      <section>
+        <button
+          onClick={() => {
+            router.push(`/tile/${data[previousArt].slug}`);
+          }}
+        >
+          previous
+        </button>
+        <div className="artTile__artwork">
+          <ArtPieces art={currentArt} imageScale={800} />
+        </div>
+        <button
+          onClick={() => {
+            router.push(`/tile/${data[nextArt].slug}`);
+          }}
+        >
+          next
+        </button>
+      </section>
     </>
   );
 }
