@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import FavoriteButton from "../Favorite";
 
-export default function ArtPieceDetails({ currentArt }) {
+export default function ArtPieceDetails({ currentArt, onToggleFavorite, artPiecesInfo }) {
   const router = useRouter();
 
   return (
@@ -15,6 +16,11 @@ export default function ArtPieceDetails({ currentArt }) {
             width={currentArt.dimensions.width / 3}
             height={currentArt.dimensions.height / 3}
           />
+          <FavoriteButton
+          onToggleFavorite={onToggleFavorite}
+          slug={currentArt.slug}
+          artPiecesInfo={artPiecesInfo}
+        />
         </div>
         <div className="artPieceDetails__information">
           <p>

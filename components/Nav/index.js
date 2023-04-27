@@ -9,26 +9,25 @@ export default function Nav({ data }) {
     <nav id="navbar">
       <ul>
         <li>
-          <Link className="navbar__link" href={"/"}>
-            Home
-          </Link>
-        </li>
-        <li>
           <Link
             className="navbar__link"
             href={
-              currentUrl === "/" || currentUrl.includes("/tile")
-                ? "/list"
+              currentUrl.includes("/tile")
+                ? "/"
                 : `/tile/${data[0].slug}`
             }
           >
-            {currentUrl === "/" || currentUrl.includes("/tile")
+            {currentUrl.includes("/tile")
               ? "Pieces List View"
               : "Pieces Tile View"}
           </Link>
         </li>
         <li>
-          <Link className="navbar__link" href="/spotlight/">
+          <Link
+            className="navbar__link"
+            href="/spotlight/"
+            
+          >
             Spotlight
           </Link>
         </li>

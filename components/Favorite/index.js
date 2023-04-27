@@ -14,7 +14,7 @@ export default function FavoriteButton({
       onClick={() => {
         onToggleFavorite(slug);
       }}
-      style={{ background: "none", border: "none" }}
+      style={{ background: "none", border: "none", cursor: "alias" }}
     >
       <MeHearty isFavorite={isFavorite} />
       <Image

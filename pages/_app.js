@@ -1,10 +1,9 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
-import React from "react";
+import React, { useState } from "react";
 import Heading from "../components/Heading/index.js";
 import Nav from "../components/nav";
 import Footer from "../components/Footer";
-import { useState } from "react";
 import { artPiecesEntries } from "../lib/localStoreageTemplate";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -22,6 +21,7 @@ const fetcher = async (url) => {
 };
 
 export default function App({ Component, pageProps }) {
+  const [randomArt, setRandomArt] = useState({})
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
     "artPiecesInfo",
     {
@@ -54,6 +54,8 @@ export default function App({ Component, pageProps }) {
       setArtPiecesInfo([...artPiecesInfo, newArtPiece]);
     }
   }
+  
+
   return (
     <>
       {console.log(artPiecesInfo)}
