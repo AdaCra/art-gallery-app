@@ -8,7 +8,7 @@ export default function List({ data }) {
       {data.map((art, index) => {
         return (
           <section key={index}>
-            <ArtPieces art={art} imageScale={10} />
+            <ArtPieces art={art} imageScale={250} />
           </section>
         );
       })}

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ArtPieces({ art, imageScale }) {
+  const imageWidthRatio = art.dimensions.height / imageScale
   return (
     <>
       <div className="artList__artwork">
@@ -9,8 +10,8 @@ export default function ArtPieces({ art, imageScale }) {
           <Image
             src={art.imageSource}
             alt={art.name}
-            width={art.dimensions.width / imageScale}
-            height={art.dimensions.height / imageScale}
+            width={art.dimensions.width / imageWidthRatio}
+            height={ imageScale}
           />  
         </Link>
       </div>
