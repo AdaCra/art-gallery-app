@@ -1,29 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import ArtPieces from "../../components/ArtPieces";
 
 export default function List({ data }) {
   return (
     <>
-      {data.map((art) => {
+      {data.map((art, index) => {
         return (
-          <section key={art.slug}>
-            <div className="artList__artwork">
-              <Image
-                src={art.imageSource}
-                alt={art.name}
-                width={art.dimensions.width / 10}
-                height={art.dimensions.height / 10}
-              />
-            </div>
-            <div className="artList__information">
-                
-              <p className="artList__information__art">
-                Name of artwork:&nbsp;<em>{art.name}</em>
-              </p>
-              <p className="artList__information__artist">
-                Artist:&nbsp;<em>{art.artist}</em>
-              </p>
-            </div>
+          <section key={index}>
+            <ArtPieces art={art} imageScale={10} />
           </section>
         );
       })}

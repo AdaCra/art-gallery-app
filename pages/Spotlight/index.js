@@ -1,15 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useState } from "react";
-
-function getRandomElement(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
 
 export default function Tile({data}) {
     
-  const router = useRouter();
   const spotlight = data[Math.floor(Math.random() * data.length)]
 
   return (
