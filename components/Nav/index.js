@@ -33,9 +33,9 @@ export default function Nav({ data }) {
           </Link>
         </li>
         <li>
-          <p id="navbar__favouritesButton" className="navbar__link">
-            Toggle Favourites
-          </p>
+          <span id="navbar__favouritesButton" className="navbar__link">
+            Toggle Favorites
+          </span>
         </li>
         <li>
           <Link className="navbar__link" href={"/about"}>

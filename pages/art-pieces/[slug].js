@@ -12,7 +12,7 @@ export default function ArtPieceDetail({ data }) {
   return (
     <>
       <ArtPieceDetails currentArt={currentArt} />
-      {/* <Comment /> */}
+      
     </>
   );
 }
