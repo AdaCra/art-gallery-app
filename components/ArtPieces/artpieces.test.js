@@ -2,6 +2,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ArtPieces from "./index";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return { push: jest.fn() };
+  },
+}));
+
 test("All art pieces are displayed as a list", () => {
   const data = [
     {

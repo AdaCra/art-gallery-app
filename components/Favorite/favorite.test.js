@@ -2,6 +2,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FavoriteButton from "./index";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return { push: jest.fn() };
+  },
+}));
+
 test("favorite button should be in the document", () => {
   render(<FavoriteButton />);
   const favoriteButton = screen.getByRole("button", { name: /favorite/i });
