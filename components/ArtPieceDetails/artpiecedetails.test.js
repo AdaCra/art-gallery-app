@@ -2,6 +2,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ArtPieceDetails from "./index";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return { push: jest.fn() };
+  },
+}));
+
 test("Each art piece's image is displayed", () => {
   render(<ArtPieceDetails />);
   const image = screen.getByAltText(/art piece/i);
