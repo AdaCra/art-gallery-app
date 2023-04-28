@@ -5,11 +5,12 @@ export default function favorites({ data, onToggleFavorite, artPiecesInfo }) {
   const favoritesList = artPiecesInfo.filter((element) => {
     return element.isFavorite === true}).map((element) => {return element.slug});
   // console.log("favoriteList: ", favoriteslist);
-  const onlyFavourites = data.filter(element=>favoritesList.includes(element.slug))
-  console.log(onlyFavourites)
+  const onlyFavs = data.filter(element=>favoritesList.includes(element.slug))
+  // console.log(onlyFavourites)
   return (
     <>
-      {onlyFavourites.map((art, index) => {
+    <h2>Favourites</h2>
+      {onlyFavs.map((art, index) => {
         return (
           <section key={index}>
             <ArtPieces

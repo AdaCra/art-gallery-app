@@ -1,16 +1,25 @@
-// export default function Comment({ comment, onNoteChange }) {
-//   return (
-//     <form>
-//     <textarea
-//       className="comment"
-//       name="comment"
-//       value={comment}
-//       onChange={(event) => onNoteChange(event.target.value)}
-//       placeholder="Write your note here... 📝"
-//       rows={10}
-//     />
-//     <button name="submit" type="submit" onClick={}>Send</button>
-//     </form>
+export default function Comment({slug, handleCommentSubmit}) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    handleCommentSubmit(slug, data.comment);
+    event.target.reset();
+  }
 
-//   );
-// }
+  return (
+    <form className="comment-form" onSubmit={handleSubmit}>
+      <div className="entry-form__field">
+        <label htmlFor="comment">Add your thoughts...</label>
+        <input
+          type="text"
+          name="comment"
+          id="comment"
+          placeholder="...💭"
+          required
+        />
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  );
+}
