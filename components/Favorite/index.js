@@ -7,8 +7,8 @@ export default function FavoriteButton({
   artPiecesInfo,
 }) {
   const currentPiece = artPiecesInfo.find((current)=>current.slug === slug)
-  
   const isFavorite = currentPiece ? currentPiece.isFavorite : false
+  
   return (
     <button
       onClick={() => {

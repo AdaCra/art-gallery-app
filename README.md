@@ -188,22 +188,22 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] The favorite-button is displayed in the spotlight view 🖼️
-- [ ] The favorite-button is displayed in each entry in the list view 🖼️
-- [ ] The favorite-button is displayed in the details view 🖼️
-- [ ] Clicking the favorite-button on a non-favorite piece saves it as a favorite 🖼️
-- [ ] Clicking the favorite-button on a favorite piece removes it from favorites 🖼️
+- [x] The favorite-button is displayed in the spotlight view 🖼️
+- [x] The favorite-button is displayed in each entry in the list view 🖼️
+- [x] The favorite-button is displayed in the details view 🖼️
+- [x] Clicking the favorite-button on a non-favorite piece saves it as a favorite 🖼️
+- [x] Clicking the favorite-button on a favorite piece removes it from favorites 🖼️
 
 #### Tasks
 
 - [x] Create an additional state `artPiecesInfo` to save further information for art pieces
 - [x] Make the `artPiecesInfo` state globally available for all pages
-- [ ] Store the favorite flag in the `artPiecesInfo`
-- [ ] Reference art pieces by `slug` in the additional state
-- [ ] Create the component `FavoriteButton`
-- [ ] `FavoriteButton` props: `isFavorite`, `onToggleFavorite`
-- [ ] Render the `FavoriteButton` component in the `Spotlight`, `ArtPiecePreview` and `ArtPieceDetails` component
-- [ ] All acceptance criteria marked with 🖼️ are covered by component testing
+- [x] Store the favorite flag in the `artPiecesInfo`
+- [x] Reference art pieces by `slug` in the additional state
+- [x] Create the component `FavoriteButton`
+- [x] `FavoriteButton` props: `isFavorite`, `onToggleFavorite`
+- [x] Render the `FavoriteButton` component in the `Spotlight`, `ArtPiecePreview` and `ArtPieceDetails` component
+- [x] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
 
