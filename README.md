@@ -203,7 +203,7 @@ Download and extract the [Resources](#resources) into your project folder.
 - [x] Create the component `FavoriteButton`
 - [x] `FavoriteButton` props: `isFavorite`, `onToggleFavorite`
 - [x] Render the `FavoriteButton` component in the `Spotlight`, `ArtPiecePreview` and `ArtPieceDetails` component
-- [x] All acceptance criteria marked with 🖼️ are covered by component testing
+- [ ] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
 
@@ -219,19 +219,19 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] A navigation link labeled "Favorites" is displayed 🖼️
-- [ ] Clicking the "Favorites" shows the FavoritesPage
-- [ ] All favorite art pieces are displayed as a list 🖼️
-- [ ] Each art piece's image is displayed 🖼️
-- [ ] Each art piece's title is displayed 🖼️
-- [ ] Each art piece's artist is displayed 🖼️
-- [ ] Each art piece's is displayed with active favorite-button 🖼️
+- [x] A navigation link labeled "Favorites" is displayed 🖼️
+- [x] Clicking the "Favorites" shows the FavoritesPage
+- [x] All favorite art pieces are displayed as a list 🖼️
+- [x] Each art piece's image is displayed 🖼️
+- [x] Each art piece's title is displayed 🖼️
+- [x] Each art piece's artist is displayed 🖼️
+- [x] Each art piece's is displayed with active favorite-button 🖼️
 
 #### Tasks
 
-- [ ] Create the page `pages/favorites` that renders the `ArtPieces` component
-- [ ] Use data from the `artPiecesInfo` state to filter for all favorite art pieces
-- [ ] Pass the list of all favorite art pieces via prop `pieces` to the `ArtPieces` component
+- [x] Create the page `pages/favorites` that renders the `ArtPieces` component
+- [x] Use data from the `artPiecesInfo` state to filter for all favorite art pieces
+- [x] Pass the list of all favorite art pieces via prop `pieces` to the `ArtPieces` component
 - [ ] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
@@ -251,9 +251,9 @@ Download and extract the [Resources](#resources) into your project folder.
 - [ ] The detail view has a list of comments for this art piece with the headline "Comments" 🖼️
 - [ ] Each comment's text is displayed 🖼️
 - [ ] Each comment's date and time is displayed 🖼️
-- [ ] The detail view has an input field to write a comment 🖼️
-- [ ] The detail view has a submit button labeled "Send" 🖼️
-- [ ] After submitting the form, the comment is appended to the list of comments 🖼️
+- [x] The detail view has an input field to write a comment 🖼️
+- [x] The detail view has a submit button labeled "Send" 🖼️
+- [x] After submitting the form, the comment is appended to the list of comments 🖼️
 
 #### Tasks
 

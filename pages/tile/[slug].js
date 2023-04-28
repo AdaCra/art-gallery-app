@@ -11,6 +11,7 @@ export default function Tile({ data, onToggleFavorite, artPiecesInfo }) {
   const previousArt = currentIndex === 0 ? data.length - 1 : currentIndex - 1;
   return (
     <>
+    <h2>Piece Tiles</h2>
       <section>
         <button
           onClick={() => {

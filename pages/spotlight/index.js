@@ -5,6 +5,7 @@ export default function Tile({ data, onToggleFavorite, artPiecesInfo }) {
 
   return (
     <section>
+      <h2>Piece Spotlight</h2>
       <Spotlight
         pieces={spotlight}
         imageScale={1100}

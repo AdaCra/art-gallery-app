@@ -1,58 +1,80 @@
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import FavoriteButton from "../Favorite";
+import Comment from "../Comment";
+import CommentList from "../CommentList";
 
-export default function ArtPieceDetails({ currentArt, onToggleFavorite, artPiecesInfo }) {
+export default function ArtPieceDetails({
+  currentArt,
+  artPiecesInfo,
+  onToggleFavorite,
+  handleCommentSubmit,
+}) {
   const router = useRouter();
 
   return (
     <>
+      <h2>Art Details</h2>
       <section>
-        <div className="artPieceDetails__artwork">
+        <section>
+          <button onClick={() => router.back()}>Go Back</button>
+          <button onClick={() => router.push("/list")}>Go to List</button>
+        </section>
+        <div className="artPieceDetails__artwork" style={{ display: "flex" }}>
           <Image
             src={currentArt.imageSource}
             alt={currentArt.name}
-            width={currentArt.dimensions.width / 3}
-            height={currentArt.dimensions.height / 3}
+            width={currentArt.dimensions.width / 4}
+            height={currentArt.dimensions.height / 4}
           />
           <FavoriteButton
-          onToggleFavorite={onToggleFavorite}
-          slug={currentArt.slug}
-          artPiecesInfo={artPiecesInfo}
-        />
+            onToggleFavorite={onToggleFavorite}
+            slug={currentArt.slug}
+            artPiecesInfo={artPiecesInfo}
+          />
+          <div>
+            {/* {console.log(currentArt.colors)} */}
+            {currentArt.colors.map((color, index) => {
+              return (
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: color,
+                    width: "50px",
+                    height: "50px",
+                    priority: true,
+                  }}
+                ></div>
+              );
+            })}
+          </div>
         </div>
         <div className="artPieceDetails__information">
-          <p>
+          <h4>
             Name of artwork:&nbsp;<em>{currentArt.name}</em>
-          </p>
-          <p>
+          </h4>
+          <h4>
             Artist:&nbsp;<em>{currentArt.artist}</em>
-          </p>
-          <p>
+          </h4>
+          <h4>
             Year:&nbsp;<em>{currentArt.year}</em>
-          </p>
-          <p>
+          </h4>
+          <h4>
             Genre:&nbsp;<em>{currentArt.genre}</em>
-          </p>
+          </h4>
         </div>
-        {console.log(currentArt.colors)}
-        <div>
-          {currentArt.colors.map((color, index) => {
-            return (
-              <div
-                key={index}
-                style={{
-                  backgroundColor: color,
-                  width: "150px",
-                  height: "30px",
-                }}
-              ></div>
-            );
-          })}
-        </div>
-        <button onClick={() => router.back()}>Go Back</button>
-        <button onClick={() => router.push("/list")}>Go to List</button>
+
+        <section>
+          <h3>Thoughts & Feelings</h3>
+          <Comment
+            slug={currentArt.slug}
+            handleCommentSubmit={handleCommentSubmit}
+          />
+          <CommentList 
+          slug={currentArt.slug}
+          artPiecesInfo={artPiecesInfo}
+          />
+        </section>
       </section>
     </>
   );

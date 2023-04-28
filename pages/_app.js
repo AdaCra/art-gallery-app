@@ -2,10 +2,11 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import React, { useState } from "react";
 import Heading from "../components/Heading/index.js";
-import Nav from "../components/nav";
+import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { artPiecesEntries } from "../lib/localStoreageTemplate";
 import useLocalStorageState from "use-local-storage-state";
+import { uid } from "uid";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -21,7 +22,6 @@ const fetcher = async (url) => {
 };
 
 export default function App({ Component, pageProps }) {
-  const [randomArt, setRandomArt] = useState({})
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
     "artPiecesInfo",
     {
@@ -54,11 +54,45 @@ export default function App({ Component, pageProps }) {
       setArtPiecesInfo([...artPiecesInfo, newArtPiece]);
     }
   }
-  
+  function handleCommentSubmit(slug, comment) {
+    const pieceToUpdate = artPiecesInfo.find(
+      (artPiece) => artPiece.slug === slug
+    );
+
+    const id = uid();
+    const date = new Date().toLocaleDateString("en-uk");
+    const time = new Date().toLocaleTimeString("en-uk");
+
+    if (pieceToUpdate) {
+      const updatedArtPiecesInfo = artPiecesInfo.map((artPiece) => {
+        if (artPiece.slug === slug) {
+          const updatedComments = [
+            ...artPiece.comments,
+            { id, date, time, comment },
+          ];
+          return { ...artPiece, comments: updatedComments };
+        } else {
+          return artPiece;
+        }
+      });
+      setArtPiecesInfo(updatedArtPiecesInfo);
+    } else {
+      const newArtPiece = {
+        slug: slug,
+        isFavorite: false,
+        comments: [
+          { id: { id }, date: { date }, time: { time }, comment: { comment } },
+        ],
+      };
+      setArtPiecesInfo([...artPiecesInfo, newArtPiece]);
+      console.log(artPiecesInfo[0]);
+    }
+  }
+  console.log(artPiecesInfo);
 
   return (
     <>
-      {console.log(artPiecesInfo)}
+      {/* {console.log(artPiecesInfo)} */}
       {/* {console.log(data)} */}
       <GlobalStyle />
       <Heading />
@@ -68,6 +102,7 @@ export default function App({ Component, pageProps }) {
         data={data}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavorite}
+        handleCommentSubmit={handleCommentSubmit}
       />
 
       <Footer />
