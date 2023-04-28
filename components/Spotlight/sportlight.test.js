@@ -2,6 +2,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Spotlight from "./index";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return { push: jest.fn() };
+  },
+}));
+
 test("the art piece artist is displayed", () => {
   const data = [
     {
