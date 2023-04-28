@@ -4,11 +4,15 @@ export default function CommentList({ slug, artPiecesInfo }) {
   return (
     <>
       {currentArt.comments.map((comment) => {
-        return <section key={comment.id}>
-            <h5>{comment.time}</h5>
-            <h5>{comment.date}</h5>
+        return (
+          <section key={comment.id}>
+            <h5>
+              {comment.time} {comment.date}
+            </h5>
             <p>{comment.comment}</p>
-        </section>;
+            <button type="">🗑️</button>
+          </section>
+        );
       })}
     </>
   );

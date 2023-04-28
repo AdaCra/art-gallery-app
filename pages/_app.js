@@ -1,6 +1,6 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
-import React, { useState } from "react";
+import React from "react";
 import Heading from "../components/Heading/index.js";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
@@ -88,7 +88,6 @@ export default function App({ Component, pageProps }) {
       console.log(artPiecesInfo[0]);
     }
   }
-  console.log(artPiecesInfo);
 
   return (
     <>
