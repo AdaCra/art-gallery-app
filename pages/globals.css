@@ -1,0 +1,102 @@
+:root {
+  --dm_background_base: #2d2d2d;
+  --dm_background_highlight: #151926;
+
+  --dm_element_background: #ffcf5420;
+  --dm_element_background_hover: #ffcf5470;
+
+  --dm_element-border-hover-select: #ffcf54;
+  --dm_element-text-hover-select: #fff;
+
+  --dm_text_color_title: #ffd5ff;
+  --dm_text_color_title_shadow: #fe4f8c;
+  --dm_text_color_main: #fff;
+  --dm_text_color_highlight: #ffcf54;
+}
+
+@font-face {
+  font-family: "Sacramento";
+  src: url("../public/fonts/Sacramento/Sacramento-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat/Montserrat-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat/Montserrat-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat/Montserrat-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat/Montserrat-Italic.ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PTSerif";
+  src: url("../public/fonts/PTSerif/PTSerif-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "PTSerif";
+  src: url("../public/fonts/PTSerif/PTSerif-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "PTSerif";
+  src: url("../public/fonts/PTSerif/PTSerif-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "PTSerif";
+  src: url("../public/fonts/PTSerif/PTSerif-Italic.ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "PTSerif", "Baskerville", Georgia;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h1 span {
+  font-family: "Sacramento", "Pacifico", cursive;
+  font-size: 70px;
+  font-weight: normal;
+  font-style: normal;
+
+  @media (max-width: 510px) {
+    font-size: 50px;
+  }
+}
+
+h2 {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+}

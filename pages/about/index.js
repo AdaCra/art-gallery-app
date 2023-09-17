@@ -3,7 +3,7 @@ export default function About() {
     <>
       <h2>About this project</h2>
       <p>It was very challenging...</p>
-      <p>...we need some sleep</p>
+      <p>...I need some sleep</p>
     </>
   );
 }

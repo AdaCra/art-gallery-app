@@ -16,7 +16,7 @@ const nextConfig = {
 };
 
 module.exports = {
-  nextConfig,
+  ...nextConfig, // Spread the nextConfig object here
   images: {
     domains: ["example-apis.vercel.app"],
   },

@@ -3,29 +3,30 @@ import styled from "styled-components";
 
 export default function Heading() {
   return (
-    <header id="header">
-      <Link href={"/"}>
-        <h1 id="header__title">C&apos;est la vie Gallery</h1>
-      </Link>
-      <p id="header__slogan">
-        The gallery for every user type under the sun...apparently
-      </p>
-    </header>
+    <Nav>
+      <TitleName>Galerie: C&apos;est la vie</TitleName>
+      <button>box</button>
+    </Nav>
   );
 }
 
-const header = styled.div`
+const Nav = styled.div`
    {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-    padding: 1rem;
+    position: relative;
+    padding: 0.1rem;
     background-color: #f5f5f5;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
     text-align: center;
-    color: #333;
-    font-family: "Roboto", sans-serif;
   }
+`;
+
+const TitleName = styled.h1`
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 390px;
+`;
+
+const Hamburger = styled.button`
+  display: visible;
 `;

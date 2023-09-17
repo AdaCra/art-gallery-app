@@ -1,12 +1,11 @@
-import GlobalStyle from "../styles";
 import useSWR from "swr";
 import React from "react";
-import Heading from "../components/Heading/index.js";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { artPiecesEntries } from "../lib/localStoreageTemplate";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
+import "./globals.css"
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -93,8 +92,6 @@ export default function App({ Component, pageProps }) {
     <>
       {/* {console.log(artPiecesInfo)} */}
       {/* {console.log(data)} */}
-      <GlobalStyle />
-      <Heading />
       <Nav data={data} />
       <Component
         {...pageProps}
