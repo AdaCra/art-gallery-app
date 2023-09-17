@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import FlickeringTitle from "./FlickeringTitle";
 import MenuBar from "./MenuBar";
+import BurgerTime from "./BurgerTime";
 
 export default function Nav({ data }) {
   const router = useRouter();
@@ -21,8 +22,9 @@ export default function Nav({ data }) {
       <NavBox>
         <FlickeringTitle />
         {/* burgermenu goes here */}
+        <BurgerTime data={data} />
         <NavList>
-        <MenuBar data={data} />
+          <MenuBar data={data} />
         </NavList>
       </NavBox>
     </>
@@ -41,18 +43,6 @@ const NavBox = styled.div`
 `;
 
 const NavList = styled.ul`
-  margin: 0;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  @media (max-width: 510px) {
-    display: none;
-  }
-`;
-const BurgerMenu = styled.ul`
   margin: 0;
   padding: 5px;
   display: flex;

@@ -1,11 +1,11 @@
 import useSWR from "swr";
 import React from "react";
-import Nav from "../components/Nav";
+import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer";
 import { artPiecesEntries } from "../lib/localStoreageTemplate";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
-import "./globals.css"
+import "./globals.css";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
     }
   );
 
-  const { data, error, isLoading, mutate } = useSWR(URL, fetcher);
+  const { data, error, isLoading } = useSWR(URL, fetcher);
   if (error) return <h2>Failed to load</h2>;
   if (isLoading) return <h2>Loading...</h2>;
 
@@ -100,7 +100,6 @@ export default function App({ Component, pageProps }) {
         onToggleFavorite={handleToggleFavorite}
         handleCommentSubmit={handleCommentSubmit}
       />
-
       <Footer />
     </>
   );
