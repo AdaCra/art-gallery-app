@@ -29,9 +29,10 @@ export const ClosedButtonBurger = styled.div`
   height: 2px;
   background: var(--dm_text_color_title);
   border-radius: 5px;
-  box-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
-    2px 2px 3px #d42cca, 2px -2px 3px #d42cca, -2px -2px 3px #d42cca,
-    -2px 2px 3px #d42cca;
+  box-shadow: 0px 0px 4px var(--dm_text_color_title),
+    0px 0px 8px var(--dm_text_color_title),
+    0px 0px 16px var(--dm_text_color_title), 2px 2px 3px #d42cca,
+    2px -2px 3px #d42cca, -2px -2px 3px #d42cca, -2px 2px 3px #d42cca;
 
   &::before,
   &::after {
@@ -44,9 +45,10 @@ export const ClosedButtonBurger = styled.div`
     height: 2px;
     background: var(--dm_text_color_title);
     border-radius: 2px;
-    box-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
-      2px 2px 3px #d42cca, 2px -2px 3px #d42cca, -2px -2px 3px #d42cca,
-      -2px 2px 3px #d42cca;
+    box-shadow: 0px 0px 4px var(--dm_text_color_title),
+      0px 0px 8px var(--dm_text_color_title),
+      0px 0px 16px var(--dm_text_color_title), 2px 2px 3px #d42cca,
+      2px -2px 3px #d42cca, -2px -2px 3px #d42cca, -2px 2px 3px #d42cca;
   }
 
   &::before {
@@ -66,33 +68,35 @@ export const OpenButtonBurger = styled(ClosedButtonBurger)`
   &::after {
     opacity: .9;
     box-shadow: none;
-    box-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
+    box-shadow: 0px 0px 4px var(--dm_text_color_title), 0px 0px 8px var(--dm_text_color_title), 0px 0px 16px var(--dm_text_color_title),
   2px 2px 3px #d42cca, 2px -2px 3px #d42cca, -2px -2px 3px #d42cca,
   -2px 2px 3px #d42cca;
   }
   &::before {
     transform: rotate(45deg);    
     animation: stall 5s linear infinite alternate;
-    box-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
+    box-shadow: 0px 0px 4px var(--dm_text_color_title), 0px 0px 8px var(--dm_text_color_title), 0px 0px 16px var(--dm_text_color_title),
   2px 2px 3px #d42cca, 2px -2px 3px #d42cca, -2px -2px 3px #d42cca,
   -2px 2px 3px #d42cca;
 }
 &::after {
     transform: rotate(-45deg);
-    box-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
+    animation: stall 5s linear infinite alternate;
+
+    box-shadow: 0px 0px 4px var(--dm_text_color_title), 0px 0px 8px var(--dm_text_color_title), 0px 0px 16px var(--dm_text_color_title),
   2px 2px 3px #d42cca, 2px -2px 3px #d42cca, -2px -2px 3px #d42cca,
   -2px 2px 3px #d42cca;
   }
 
   @keyframes stall {
-    20%, 29.5%, 39%, 40%, 41%, 52%, 100% {
+    20%, 29.5%, 35%, 38.5%, 61.5%, 75%, 100% {
       opacity: .99;
-      box-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
+      box-shadow: 0px 0px 4px var(--dm_text_color_title), 0px 0px 8px var(--dm_text_color_title), 0px 0px 16px var(--dm_text_color_title),
   2px 2px 3px #d42cca, 2px -2px 3px #d42cca, -2px -2px 3px #d42cca,
   -2px 2px 3px #d42cca;
       
     }
-    30%,39.5%, 40.5%, 52.5%, 99.5% {
+    30%,39%, 62%, 75.5%, 99.5% {
       opacity: 0.3;
       box-shadow: none;
     }

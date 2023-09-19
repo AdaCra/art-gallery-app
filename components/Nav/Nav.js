@@ -24,12 +24,13 @@ export default function Nav({ data }) {
 const NavWrapper = styled.div`
    {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-  }`
+    height: 250px;
+  }
+`;
 
 const NavBox = styled.div`
    {
+    z-index: 1;
     position: fixed;
     text-align: center;
     background-color: var(--dm_background_base);
@@ -41,7 +42,6 @@ const NavBox = styled.div`
 const NavList = styled.ul`
   position: absolute;
   top: 210px;
-  margin: 0;
   width: 100vw;
   display: flex;
   justify-content: space-between;
@@ -51,12 +51,25 @@ const NavList = styled.ul`
   background-color: var(--dm_background_base);
 
   @media (max-width: 510px) {
-    visibility: ${({ $menuIsOpen }) => ($menuIsOpen ? "visible" : "hidden")};
+    display: ${({ $menuIsOpen }) => ($menuIsOpen ? "flex" : "none")};
     top: 250px;
     right: 0;
     width: 150px;
     flex-direction: column;
     text-align: left;
   }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 2px;
+    background: var(--dm_text_color_title);
+    border-radius: 2px;
+    box-shadow: 0px 0px 4px var(--dm_text_color_title),
+      0px 0px 8px var(--dm_text_color_title),
+      0px 0px 16px var(--dm_text_color_title), 2px 2px 3px #d42cca,
+      2px -2px 3px #d42cca, -2px -2px 3px #d42cca, -2px 2px 3px #d42cca;
   }
 `;

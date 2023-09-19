@@ -7,15 +7,17 @@ export const TitleName = styled.h1`
   height: 250px;
   width: 100vw;
   color: var(--dm_text_color_title);
-  text-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
-    3px 3px 10px #d42cca, -3px 3px 10px #d42cca, -3px -3px 10px #d42cca,
-    -3px 3px 10px #d42cca, 6px 6px 40px #d42cca, 6px -6px 40px #d42cca,
-    -6px -6px 40px #d42cca, -6px 6px 40px #d42cca;
+  text-shadow: 0px 0px 4px var(--dm_text_color_title),
+    0px 0px 8px var(--dm_text_color_title),
+    0px 0px 16px var(--dm_text_color_title), 3px 3px 10px #d42cca,
+    -3px 3px 10px #d42cca, -3px -3px 10px #d42cca, -3px 3px 10px #d42cca,
+    6px 6px 40px #d42cca, 6px -6px 40px #d42cca, -6px -6px 40px #d42cca,
+    -6px 6px 40px #d42cca;
 `;
 
 export const TitleFlicker = styled.span`
   color: var(--dm_text_color_title);
-  text-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
+  text-shadow: 0px 0px 4px var(--dm_text_color_title), 0px 0px 8px var(--dm_text_color_title), 0px 0px 16px var(--dm_text_color_title),
     3px 3px 10px #d42cca, -3px 3px 10px #d42cca, -3px -3px 10px #d42cca,
     -3px 3px 10px #d42cca, 6px 6px 40px #d42cca, 6px -6px 40px #d42cca,
     -6px -6px 40px #d42cca, -6px 6px 40px #d42cca;
@@ -23,7 +25,7 @@ export const TitleFlicker = styled.span`
     @keyframes flicker {
       20%, 29.5%, 39%, 40%, 41%, 52%, 100% {
         opacity: .99;
-        text-shadow: 0px 0px 4px #ffd5ff, 0px 0px 8px #ffd5ff, 0px 0px 16px #ffd5ff,
+        text-shadow: 0px 0px 4px var(--dm_text_color_title), 0px 0px 8px var(--dm_text_color_title), 0px 0px 16px var(--dm_text_color_title),
     3px 3px 10px #d42cca, -3px 3px 10px #d42cca, -3px -3px 10px #d42cca,
     -3px 3px 10px #d42cca, 6px 6px 40px #d42cca, 6px -6px 40px #d42cca,
     -6px -6px 40px #d42cca, -6px 6px 40px #d42cca;
