@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import styled from "styled-components";
 import FlickeringTitle from "./FlickeringTitle";
 import MenuBar from "./MenuBar";
@@ -8,10 +9,12 @@ export default function Nav({ data }) {
   // State to manage the visibility of the menu on small screens
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
+
+
   return (
     <NavWrapper>
       <NavBox>
-        <FlickeringTitle />
+        <FlickeringTitle  />
         <BurgerButton menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
         <NavList $menuIsOpen={menuIsOpen}>
           <MenuBar data={data} menuIsOpen={menuIsOpen} />

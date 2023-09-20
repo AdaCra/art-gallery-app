@@ -102,10 +102,15 @@ h1 span {
 }
 
 h2 {
-  margin: 30px 0;
+  padding: 30px 0 0;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: normal;
   font-style: normal;
   color: var(--dm_text_color_main);
+  @media (max-width: 510px) {
+    padding: 15px 0 0;
+
+    font-size: 18px;
+  }
 }

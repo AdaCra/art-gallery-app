@@ -1,9 +1,12 @@
-export default function CommentList({ slug, artPiecesInfo }) {
+export default function CommentList({ slug, artPiecesInfo, title }) {
+  const hasObjectWithSlug = artPiecesInfo.some((obj) => obj.slug === slug);
   const currentArt = artPiecesInfo.find((art) => art.slug === slug);
-  const currentArtComments = currentArt.comments;
+  console.log(slug)
+  console.log(artPiecesInfo)
   return (
     <>
-      {currentArt.comments.map((comment) => {
+      {hasObjectWithSlug === true ? (
+        currentArt.comments.map((comment) => {
         return (
           <section key={comment.id}>
             <h5>
@@ -13,7 +16,15 @@ export default function CommentList({ slug, artPiecesInfo }) {
             <button type="">🗑️</button>
           </section>
         );
-      })}
+      })
+      ) : (
+        <section>
+            <h5>
+              There are no Personal Comments for {title}
+            </h5>
+          </section> 
+      )}
+      {/*  */}
     </>
   );
 }

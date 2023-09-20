@@ -1,9 +1,16 @@
 import { LineBreak, TitleFlicker, TitleName } from "./FlickeringTitle.Styled";
+import { useRouter } from "next/router";
 
 
 export default function FlickeringTitle() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/");
+  };
   return (
-    <TitleName>
+    <TitleName onClick = { handleClick }
+>
       <TitleFlicker
         style={{ animation: `flicker 8.5s linear infinite alternate` }}
       >

@@ -20,7 +20,7 @@ export default function ArtPieceDetails({
           <button onClick={() => router.back()}>Go Back</button>
           <button onClick={() => router.push("/list")}>Go to List</button>
         </section>
-        <div className="artPieceDetails__artwork" style={{ display: "flex" }}>
+        <div style={{ display: "flex" }}>
           <Image
             src={currentArt.imageSource}
             alt={currentArt.name}
@@ -73,6 +73,7 @@ export default function ArtPieceDetails({
           <CommentList 
           slug={currentArt.slug}
           artPiecesInfo={artPiecesInfo}
+          title={currentArt.name}
           />
         </section>
       </section>

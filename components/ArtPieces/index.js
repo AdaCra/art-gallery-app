@@ -1,48 +1,57 @@
 import Image from "next/image";
-import Link from "next/link";
 import FavoriteButton from "../Favorite";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export default function ArtPieces({
   pieces,
   imageScale,
   onToggleFavorite,
   artPiecesInfo,
-  Use,
 }) {
-  const ImageWrapper = styled.div`
-    z-index: 0;
-    position: relative;
-    width: 80vw;
-  `;
-
   const imageWidthRatio = pieces.dimensions.height / imageScale;
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/art-pieces/${pieces.slug}`);
+  };
+
   return (
-    <>
       <ImageWrapper>
-        <Link href={`/art-pieces/${pieces.slug}`}>
+        <ImageBox>
           <Image
             src={pieces.imageSource}
             alt={pieces.name}
             width={pieces.dimensions.width / imageWidthRatio}
             height={imageScale}
-            priority={false}
+            priority={true}
+            onClick={handleClick}
           />
-        </Link>
-        <FavoriteButton
-          onToggleFavorite={onToggleFavorite}
-          slug={pieces.slug}
-          artPiecesInfo={artPiecesInfo}
-        />
+          <FavoriteButton
+            onToggleFavorite={onToggleFavorite}
+            slug={pieces.slug}
+            artPiecesInfo={artPiecesInfo}
+          />
+        </ImageBox>
       </ImageWrapper>
-      <div className="artList__information">
-        <p className="artList__information__art">
-          Name of artwork:&nbsp;<em>{pieces.name}</em>
-        </p>
-        <p className="artList__information__artist">
-          Artist:&nbsp;<em>{pieces.artist}</em>
-        </p>
-      </div>
-    </>
   );
 }
+
+const ImageWrapper = styled.div`
+  z-index: 0;
+  padding: 20px;
+  position: relative;
+  width: 80vw;
+  height: calc(100vw - 360px)
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ImageBox = styled.div`
+  border: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+`;

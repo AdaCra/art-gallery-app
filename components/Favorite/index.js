@@ -1,30 +1,39 @@
 import Image from "next/image";
 import MeHearty from "../Heart/Heart";
+import styled from "styled-components";
 
 export default function FavoriteButton({
   onToggleFavorite,
   slug,
   artPiecesInfo,
 }) {
-  const currentPiece = artPiecesInfo.find((current)=>current.slug === slug)
-  const isFavorite = currentPiece ? currentPiece.isFavorite : false
-  
+  const currentPiece = artPiecesInfo.find((current) => current.slug === slug);
+  const isFavorite = currentPiece ? currentPiece.isFavorite : false;
+
   return (
-    <button
+    <HeartButton
       onClick={() => {
         onToggleFavorite(slug);
       }}
-      style={{ background: "none", border: "none", cursor: "alias" }}
     >
       <MeHearty isFavorite={isFavorite} />
       <Image
         src="/heart.svg"
         alt="Favorite"
-        width={20}
-        height={20}
+        width={30}
+        height={30}
         className="favorite-icon"
-        style={{visibility: "hidden"}}
+        style={{ visibility: "hidden" }}
       />
-    </button>
+    </HeartButton>
   );
 }
+
+const HeartButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;

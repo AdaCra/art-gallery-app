@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export default function MenuBar({ data, menuIsOpen }) {
   const router = useRouter();
@@ -18,13 +18,17 @@ export default function MenuBar({ data, menuIsOpen }) {
         >
           List{" "}
         </NavLink>
-        <NavLink
-          href={isCurrentPage("/list") ? `/tile/${data[0].slug}` : "list"}
+        <NavSlash
+          href={
+            isCurrentPage("/list")
+              ? `/tile/${data[0].slug}` || isCurrentPage("/tile")
+              : "/list"
+          }
           $currentlyActive={isCurrentPage("/tile") || isCurrentPage("/list")}
           $menuIsOpen={menuIsOpen}
         >
           /
-        </NavLink>
+        </NavSlash>
         <NavLink
           href={`/tile/${data[0].slug}`}
           $menuIsOpen={menuIsOpen}
@@ -65,47 +69,12 @@ export default function MenuBar({ data, menuIsOpen }) {
   );
 }
 
-const highlightStyles = `
+export const highlightStyles = `
 opacity: 0.99;
 text-shadow: 0px 0px 4px var(--dm_text_color_title),
 0px 0px 8px var(--dm_text_color_title),
 0px 0px 16px var(--dm_text_color_title), 2px 2px 3px #d42cca,
 2px -2px 3px #d42cca, -2px -2px 3px #d42cca, -2px 2px 3px #d42cca;
-`;
-
-const SpanDash = styled.span`
-  text-decoration: none;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  color: var(--dm_text_color_title);
-  opacity: 0.5;
-  line-height: 40px;
-  ${highlightStyles}
-
-  @media (max-width: 510px) {
-    align-vertical: middle;
-    animation: ${({ $menuIsOpen }) =>
-      $menuIsOpen ? `grow 0.3s  ease-out` : `none`};
-    font-size: 18px;
-  }
-
-  &:hover {
-    ${highlightStyles}
-  }
-
-  @keyframes grow {
-    0% {
-      opacity: 0;
-      line-height: 0px;
-      opacity: 0.5;
-    }
-    100% {
-      opacity: 1;
-      line-height: 40px;
-      opacity: 0.5;
-    }
-  }
 `;
 
 const NavItem = styled.li`
@@ -129,7 +98,6 @@ const NavItem = styled.li`
         2px 2px 1px #d42cca, 2px -2px 1px #d42cca, -2px -2px 1px #d42cca,
         -2px 2px 1px #d42cca;
   }
-
 `;
 
 const NavLink = styled(Link)`
@@ -165,5 +133,12 @@ const NavLink = styled(Link)`
       line-height: 40px;
       opacity: 0.5;
     }
+  }
+`;
+
+const NavSlash = styled(NavLink)`
+  &:hover {
+    opacity: 0.5;
+    text-shadow: none;
   }
 `;
