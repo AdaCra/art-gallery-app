@@ -2,7 +2,6 @@ import Image from "next/image";
 import FavoriteButton from "../Favorite";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { useEffect, useRef } from "react";
 
 export default function ArtPieceTile({
   pieces,
@@ -11,20 +10,8 @@ export default function ArtPieceTile({
   artPiecesInfo,
 }) {
   const router = useRouter();
-  const imageBoxRef = useRef(null);
   const imageRatio = pieces.dimensions.width / pieces.dimensions.height;
   const boxRatio = 0;
-  useEffect(() => {
-    // Use useEffect to access the size after rendering
-    if (imageBoxRef.current) {
-      const imageBoxWidth = imageBoxRef.current.offsetWidth;
-      const imageBoxHeight = imageBoxRef.current.offsetHeight;
-      console.log(`ImageBox Width: ${imageBoxWidth}px`);
-      console.log(`ImageBox Height: ${imageBoxHeight}px`);
-    }
-  }, []);
-  // if imageRatio < than boxRatio then image load imageWidth = boxWidth and imageHeight = boxWidth / imageRatio
-  // if imageRatio > than boxRatio then image load imageHeight = boxHeight and imageWidth = boxheight * imageRatio
 
   const handleClick = () => {
     router.push(`/art-pieces/${pieces.slug}`);
@@ -32,8 +19,9 @@ export default function ArtPieceTile({
 
   return (
     <ImageWrapper>
-      <ImageBox ref={imageBoxRef}>
+      <ImageBox>
         <Image
+        style={{objectFit: "contain"}}
           src={pieces.imageSource}
           alt={pieces.name}
           fill
