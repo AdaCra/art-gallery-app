@@ -5,13 +5,10 @@ import { useRouter } from "next/router";
 
 export default function ArtPieceTile({
   pieces,
-  imageScale,
   onToggleFavorite,
   artPiecesInfo,
 }) {
   const router = useRouter();
-  const imageRatio = pieces.dimensions.width / pieces.dimensions.height;
-  const boxRatio = 0;
 
   const handleClick = () => {
     router.push(`/art-pieces/${pieces.slug}`);
@@ -20,8 +17,7 @@ export default function ArtPieceTile({
   return (
     <ImageWrapper>
       <ImageBox>
-        <Image
-        style={{objectFit: "contain"}}
+        <NextImage
           src={pieces.imageSource}
           alt={pieces.name}
           fill
@@ -53,4 +49,6 @@ const ImageBox = styled.div`
   height: calc(100vh - 400px);
 `;
 
-const NextImage = styled(Image)``;
+const NextImage = styled(Image)`
+  object-fit: contain;
+`;
