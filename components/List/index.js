@@ -1,6 +1,6 @@
 import ArtPieces from "../ArtPieces";
 
-export default function List({ data, onToggleFavorite, artPiecesInfo }) {
+export default function Grid({ data, onToggleFavorite, artPiecesInfo }) {
   return (
     <>
       {data.map((art, index) => {

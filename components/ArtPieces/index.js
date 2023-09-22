@@ -1,57 +1,112 @@
 import Image from "next/image";
-import FavoriteButton from "../Favorite";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { toTitleCase } from "../Functions/toTitleCase/toTitleCase";
+import FavoriteButton from "../Favorite";
 
-export default function ArtPieces({
+export default function ArtPieceTile({
   pieces,
-  imageScale,
   onToggleFavorite,
   artPiecesInfo,
 }) {
-  const imageWidthRatio = pieces.dimensions.height / imageScale;
   const router = useRouter();
 
   const handleClick = () => {
     router.push(`/art-pieces/${pieces.slug}`);
   };
-
+  const correctedName = toTitleCase(pieces.artist);
   return (
-      <ImageWrapper>
-        <ImageBox>
-          <Image
-            src={pieces.imageSource}
-            alt={pieces.name}
-            width={pieces.dimensions.width / imageWidthRatio}
-            height={imageScale}
-            priority={true}
-            onClick={handleClick}
-          />
-          <FavoriteButton
-            onToggleFavorite={onToggleFavorite}
-            slug={pieces.slug}
-            artPiecesInfo={artPiecesInfo}
-          />
-        </ImageBox>
-      </ImageWrapper>
+    <GridTile>
+      <ImageBox>
+        <NextImage
+          src={pieces.imageSource}
+          alt={pieces.name}
+          fill
+          sizes="(max-width: 4000px) 80vw, 80vw"
+          priority={true}
+          onClick={handleClick}
+        />
+      </ImageBox>
+      <InfoBox>
+        <div>
+          <InfoKey>Title&nbsp;&nbsp;:</InfoKey>
+          <InfoContent> {pieces.name}</InfoContent>
+        </div>
+        <div>
+          <InfoKey>Artist&nbsp;&nbsp;:</InfoKey>
+          <InfoContent> {correctedName}</InfoContent>
+        </div>
+        <div>
+          <InfoKey>Year&nbsp;:</InfoKey>
+          <InfoContent> {pieces.year}</InfoContent>
+        </div>
+      </InfoBox>
+      <FavoriteButton
+        onToggleFavorite={onToggleFavorite}
+        slug={pieces.slug}
+        artPiecesInfo={artPiecesInfo}
+      />
+    </GridTile>
   );
 }
 
-const ImageWrapper = styled.div`
-  z-index: 0;
-  padding: 20px;
+const GridTile = styled.section`
   position: relative;
-  width: 80vw;
-  height: calc(100vw - 360px)
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 600px;
+  height: 750px;
+  border: 2px solid pink;
+  padding: 15px;
+  margin-bottom: 30px;
+  @media (max-width: 610px) {
+    width: 400px;
+    height: 550px;
+    padding: 10px;
+  }
+
+  @media (max-width: 410px) {
+    width: 200px;
+    height: 350px;
+  }
+`;
+
+const InfoBox = styled.div`
+  width: 570px;
+  margin-top: 15px;
+  height: 60px;
+  position: absolute;
+  @media (max-width: 610px) {
+    width: 370px;
+  }
+  @media (max-width: 410px) {
+    width: 180px;
+    height: 80px;
+  }
 `;
 
 const ImageBox = styled.div`
-  border: none;
-  margin: 0;
-  padding: 0;
   position: relative;
+  width: 100%;
+  height: calc(100% - 75px);
+  @media (max-width: 410px) {
+    height: calc(100% - 90px);
+  }
+`;
+
+const NextImage = styled(Image)`
+  object-fit: contain;
+  cursor: pointer;
+`;
+
+const InfoKey = styled.p`
+  display: inline;
+  padding-right: 10px;
+  font-weight: light;
+  @media (max-width: 410px) {
+    padding-right: 5px;
+  }
+`;
+const InfoContent = styled.h3`
+  display: inline;
+  font-weight: bold;
+  font-style: italic;
 `;

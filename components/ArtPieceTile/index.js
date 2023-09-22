@@ -1,13 +1,8 @@
 import Image from "next/image";
-import FavoriteButton from "../Favorite";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-export default function ArtPieceTile({
-  pieces,
-  onToggleFavorite,
-  artPiecesInfo,
-}) {
+export default function ArtPieceTile({ pieces }) {
   const router = useRouter();
 
   const handleClick = () => {
@@ -21,13 +16,9 @@ export default function ArtPieceTile({
           src={pieces.imageSource}
           alt={pieces.name}
           fill
+          sizes="(max-width: 4000px) 80vw, 80vw"
           priority={true}
-          onClick={handleClick}
-        />
-        <FavoriteButton
-          onToggleFavorite={onToggleFavorite}
-          slug={pieces.slug}
-          artPiecesInfo={artPiecesInfo}
+          onClick={handleClick}          
         />
       </ImageBox>
     </ImageWrapper>
@@ -36,8 +27,7 @@ export default function ArtPieceTile({
 
 const ImageWrapper = styled.div`
   z-index: 0;
-  margin: 0 auto;
-  padding-top: 15px;
+  margin: 0 auto 45px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,9 +36,11 @@ const ImageWrapper = styled.div`
 const ImageBox = styled.div`
   position: relative;
   width: 80vw;
-  height: calc(100vh - 400px);
+  height: calc(100vh - 430px);
+  // 430 = HeaderHeight+TitleHeight+FooterHeight+15pxFooterMargin
 `;
 
 const NextImage = styled(Image)`
   object-fit: contain;
+  cursor: pointer;
 `;

@@ -80,6 +80,7 @@
   font-size: 14px;
   font-weight: normal;
   font-style: normal;
+  color: var(--dm_text_color_main);
 }
 
 body::-webkit-scrollbar {

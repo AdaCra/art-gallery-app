@@ -12,19 +12,19 @@ export default function MenuBar({ data, menuIsOpen }) {
     <>
       <NavItem>
         <NavLink
-          href={"/list"}
+          href={"/grid"}
           $menuIsOpen={menuIsOpen}
-          $currentlyActive={isCurrentPage("/list")}
+          $currentlyActive={isCurrentPage("/grid")}
         >
-          List{" "}
+          Grid{" "}
         </NavLink>
         <NavSlash
           href={
-            isCurrentPage("/list")
+            isCurrentPage("/grid")
               ? `/tile/${data[0].slug}` || isCurrentPage("/tile")
-              : "/list"
+              : "/grid"
           }
-          $currentlyActive={isCurrentPage("/tile") || isCurrentPage("/list")}
+          $currentlyActive={isCurrentPage("/tile") || isCurrentPage("/grid")}
           $menuIsOpen={menuIsOpen}
         >
           /
@@ -82,7 +82,7 @@ const NavItem = styled.li`
   list-style: none;
 
   @media (max-width: 510px) {
-    padding-left: 15px;
+    padding: 0 15px;
     align-vertical: middle;
     &::before {
       content: "";
@@ -137,6 +137,7 @@ const NavLink = styled(Link)`
 `;
 
 const NavSlash = styled(NavLink)`
+  margin: 0 15px;
   &:hover {
     opacity: 0.5;
     text-shadow: none;

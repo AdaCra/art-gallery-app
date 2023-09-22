@@ -18,7 +18,7 @@ export default function ArtPieceDetails({
       <section>
         <section>
           <button onClick={() => router.back()}>Go Back</button>
-          <button onClick={() => router.push("/list")}>Go to List</button>
+          <button onClick={() => router.push("/grid")}>Go to List</button>
         </section>
         <div style={{ display: "flex" }}>
           <Image
