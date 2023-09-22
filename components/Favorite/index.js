@@ -14,7 +14,7 @@ export default function FavoriteButton({
 
   const currentPiece = artPiecesInfo.find((current) => current.slug === slug);
   const isFavorite = currentPiece ? currentPiece.isFavorite : false;
-  const HeartStyle = currentUrl.includes("grid")
+  const HeartStyle = currentUrl.includes("grid")||currentUrl.includes("favorites")
     ? HeartButtonGrid
     : currentUrl.includes("tile")
     ? HeartButtonTile
