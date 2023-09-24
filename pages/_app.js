@@ -2,23 +2,20 @@ import useSWR from "swr";
 import React from "react";
 import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer";
-import { artPiecesEntries } from "../lib/localStoreageTemplate";
-import useLocalStorageState from "use-local-storage-state";
+import {
+  artPiecesEntries,
+  initialCookiesAllowed,
+} from "../lib/localStoreageTemplate";
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 import "./globals.css";
+import { fetcher } from "../components/Functions/fetcher/fetcher";
+import { turnOnCookies } from "../components/Functions/turnOnCookies/turnOnCookies";
+import EntryPage from "../components/EntryPage/EntryPage";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
-const fetcher = async (url) => {
-  const res = await fetch(url);
-  if (!res.ok) {
-    const error = new Error("An error occurred while fetching the data.");
-    error.info = await res.json();
-    error.status = res.status;
-    throw error;
-  }
-  return res.json();
-};
+fetcher;
 
 export default function App({ Component, pageProps }) {
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
@@ -27,6 +24,19 @@ export default function App({ Component, pageProps }) {
       defaultValue: artPiecesEntries,
     }
   );
+
+  const [cookiesAllowed, setCookiesAllowed] = useLocalStorageState(
+    "cookiesAllowed",
+    {
+      defaultValue: initialCookiesAllowed,
+    }
+  );
+    
+  function handleTurnOnCookies() {
+    turnOnCookies(setCookiesAllowed);
+  }
+
+
 
   const { data, error, isLoading } = useSWR(URL, fetcher);
   if (error) return <h2>Failed to load</h2>;
@@ -84,23 +94,36 @@ export default function App({ Component, pageProps }) {
         ],
       };
       setArtPiecesInfo([...artPiecesInfo, newArtPiece]);
-      console.log(artPiecesInfo[0]);
     }
   }
 
   return (
     <>
-      {/* {console.log(artPiecesInfo)} */}
-      {/* {console.log(data)} */}
-      <Nav data={data} />
-      <Component
-        {...pageProps}
-        data={data}
-        artPiecesInfo={artPiecesInfo}
-        onToggleFavorite={handleToggleFavorite}
-        handleCommentSubmit={handleCommentSubmit}
-      />
-      <Footer />
+      {cookiesAllowed.cookiesAllowed === false ? (
+        <EntryPage/>
+        // <>
+        //   <h1>blah blah blah</h1>
+        //   <button
+        //     onClick={handleTurnOnCookies}
+        //   >
+        //     Allow
+        //   </button>
+        //   <button>Leave</button>
+        // </>
+      ) : (
+        <>
+          <Nav data={data} />
+          <Component
+            {...pageProps}
+            data={data}
+            artPiecesInfo={artPiecesInfo}
+            onToggleFavorite={handleToggleFavorite}
+            handleCommentSubmit={handleCommentSubmit}
+          />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
+

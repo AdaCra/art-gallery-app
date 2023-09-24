@@ -47,11 +47,19 @@ const FooterLink = styled(Link)`
 `;
 
 const TradeMark = styled.p`
+-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  cursor: default;
   position: absolute;
   bottom: 0;
   right: 0;
   margin-right: 5px;
-  ${font}`;
+  ${font}
+`;
 
 export default function Footer() {
   return (
