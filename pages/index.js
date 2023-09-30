@@ -1,26 +1,54 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-// Styled components for styling
+export default function HomePage({data}) {
+  return (
+    <>
+      <Wrapper>
+        <HeadingDiv>
+          <SuperSpanHeading>You have arrived at</SuperSpanHeading>
+          <h1>Galerie: C&apos;est la Vie</h1>
+        </HeadingDiv>
+
+        <Introduction>Where Art enters your life.</Introduction>
+
+
+        <h2>Please select which link you wish to go to</h2>
+        <LinksContainer>
+          <Link href={"/grid"}>Grid View</Link>
+          <Link href={`/tile/${data[0].slug}`}>Tile View</Link>
+          <Link href={`spotlight`}>Spotlight</Link>
+          <Link href={`favorites`}>Favorites</Link>
+          <Link href={`about`}>About</Link>
+        </LinksContainer>
+      </Wrapper>
+    </>
+  );
+}
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   height: 100%;
   text-align: center;
 `;
 
-const Popup = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 20px;
-  text-align: center;
+const SuperSpanHeading = styled.div`
+font-family: "Montserrat", Arial, Helvetica, sans-serif;
+font-size: 20px;
+font-style: italic;
+color: var(--dm_text_color_main);
+@media (max-width: 510px) {
+
+  font-size: 18px;
+}
 `;
+const HeadingDiv = styled.div`
+  margin-top: 20vh;
+`;
+
 
 const Introduction = styled.p`
   font-size: 18px;
@@ -30,52 +58,14 @@ const Introduction = styled.p`
 const LinksContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 50%;
 `;
 
 const Link = styled.a`
   text-decoration: none;
-  color: #333;
+  width: 20%;
+  color: var(--dm_text_color_title);
   font-weight: bold;
   font-size: 16px;
   margin: 10px;
 `;
-
-export default function HomePage({ data, onToggleFavorite, artPiecesInfo }) {
-  const [showPopup, setShowPopup] = useState(true);
-
-  // Function to hide the popup
-  const hidePopup = () => {
-    setShowPopup(false);
-  };
-
-  return (
-    <>
-    <Wrapper>
-      {showPopup && (
-        <Popup>
-          This website uses cookies to save user content.
-          <button onClick={hidePopup}>Got it!</button>
-        </Popup>
-      )}
-      <div>
-      <h1>You have arrived at</h1>
-      <h1>Galerie: Ce la Vie</h1>
-      </div>
-
-      <Introduction>
-        Where Art enters your life.
-      </Introduction>
-      
-      <LinksContainer>
-        <Link href="#">Grid View</Link>
-        <Link href="#">Tile View</Link>
-        <Link href="#">Spotlight</Link>
-        <Link href="#">Favorites</Link>
-        <Link href="#">About</Link>
-      </LinksContainer>
-    </Wrapper>
-    </>
-  );
-}
-

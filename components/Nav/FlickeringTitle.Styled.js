@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
+export const TitleWrapper = styled.div`
+  width: 100vw;
+  display: flex;
+`;
+
 export const TitleName = styled.h1`
   cursor: pointer;
   margin: 0 auto;
   padding: 1em 20px;
   height: 250px;
-  width: 100vw;
   color: var(--dm_text_color_title);
   text-shadow: 0px 0px 4px var(--dm_text_color_title),
     0px 0px 8px var(--dm_text_color_title),

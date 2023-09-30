@@ -58,13 +58,16 @@ const ButtonWrapper = styled.div`
 `;
 
 const SkimButton = styled.button`
-  z-index: 2;
+  z-index: 1;
   border: none;
   background: transparent;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 30px;
   color: var(--dm_text_color_title);
   vertical-align: middle;
+  cursor: pointer;
+  opacity: 0.5;
+
 
   &: ${({ $mobile }) => ($mobile ? `active` : `hover`)} {
     ${highlightStyles}

@@ -7,21 +7,24 @@ export default function FavoriteButton({
   onToggleFavorite,
   slug,
   artPiecesInfo,
-  position,
 }) {
   const router = useRouter();
   const currentUrl = router.asPath;
 
   const currentPiece = artPiecesInfo.find((current) => current.slug === slug);
   const isFavorite = currentPiece ? currentPiece.isFavorite : false;
-  const HeartStyle = currentUrl.includes("grid")||currentUrl.includes("favorites")
-    ? HeartButtonGrid
-    : currentUrl.includes("tile")
-    ? HeartButtonTile
-    : Centered;
+  const HeartStyle =
+    currentUrl.includes("grid") || currentUrl.includes("favorites")
+      ? HeartButtonGrid
+      : currentUrl.includes("tile")
+      ? HeartButtonTile
+      : currentUrl.includes("art-pieces/")
+      ? HeartButtonDetail
+      : Centered;
 
   return (
     <HeartStyle
+      title={isFavorite ? "Remove from Favourites" : "Add to Favorites"}
       onClick={() => {
         onToggleFavorite(slug);
       }}
@@ -60,4 +63,14 @@ const HeartButtonGrid = styled.button`
   width: 30px;
   bottom: 30px;
   right: 20px;
+`;
+const HeartButtonDetail = styled.button`
+  position: absolute;
+  background: var(--dm_background_highlight);
+  border: var(--dm_background_highlight);
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  top: 80px;
+  right: 5%;
 `;

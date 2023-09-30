@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 
 export default function ArtPieceTile({ pieces }) {
   const router = useRouter();
+  const currentUrl = router.asPath;
+
+  const artPiecesPage = currentUrl.includes("art-pieces/");
 
   const handleClick = () => {
     router.push(`/art-pieces/${pieces.slug}`);
@@ -13,12 +16,13 @@ export default function ArtPieceTile({ pieces }) {
     <ImageWrapper>
       <ImageBox>
         <NextImage
+          $isDetails={artPiecesPage}
           src={pieces.imageSource}
           alt={pieces.name}
           fill
           sizes="(max-width: 4000px) 80vw, 80vw"
           priority={true}
-          onClick={handleClick}          
+          onClick={artPiecesPage ? () => {} : handleClick}
         />
       </ImageBox>
     </ImageWrapper>
@@ -37,10 +41,9 @@ const ImageBox = styled.div`
   position: relative;
   width: 80vw;
   height: calc(100vh - 430px);
-  // 430 = HeaderHeight+TitleHeight+FooterHeight+15pxFooterMargin
 `;
 
 const NextImage = styled(Image)`
   object-fit: contain;
-  cursor: pointer;
+  cursor: ${({ $isDetails }) => ($isDetails ? "default" : "pointer")};
 `;

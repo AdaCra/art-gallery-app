@@ -2,16 +2,12 @@ import useSWR from "swr";
 import React from "react";
 import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer";
-import {
-  artPiecesEntries,
-  initialCookiesAllowed,
-} from "../lib/localStoreageTemplate";
+import { artPiecesEntries } from "../lib/localStoreageTemplate";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import "./globals.css";
 import { fetcher } from "../components/Functions/fetcher/fetcher";
-import { turnOnCookies } from "../components/Functions/turnOnCookies/turnOnCookies";
-import EntryPage from "../components/EntryPage/EntryPage";
+import CookieConsent from "../components/Cookies/Cookies";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -24,19 +20,6 @@ export default function App({ Component, pageProps }) {
       defaultValue: artPiecesEntries,
     }
   );
-
-  const [cookiesAllowed, setCookiesAllowed] = useLocalStorageState(
-    "cookiesAllowed",
-    {
-      defaultValue: initialCookiesAllowed,
-    }
-  );
-    
-  function handleTurnOnCookies() {
-    turnOnCookies(setCookiesAllowed);
-  }
-
-
 
   const { data, error, isLoading } = useSWR(URL, fetcher);
   if (error) return <h2>Failed to load</h2>;
@@ -97,33 +80,41 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+  function handleCommentDelete(slug, commentId) {
+    const pieceToUpdate = artPiecesInfo.find(
+      (artPiece) => artPiece.slug === slug
+    );
+
+    if (pieceToUpdate) {
+      const updatedArtPiecesInfo = artPiecesInfo.map((artPiece) => {
+        if (artPiece.slug === slug) {
+          const updatedComments = artPiece.comments.filter(
+            (comment) => comment.id !== commentId
+          );
+          return { ...artPiece, comments: updatedComments };
+        } else {
+          return artPiece;
+        }
+      });
+      setArtPiecesInfo(updatedArtPiecesInfo);
+    }
+  }
+
   return (
     <>
-      {cookiesAllowed.cookiesAllowed === false ? (
-        <EntryPage/>
-        // <>
-        //   <h1>blah blah blah</h1>
-        //   <button
-        //     onClick={handleTurnOnCookies}
-        //   >
-        //     Allow
-        //   </button>
-        //   <button>Leave</button>
-        // </>
-      ) : (
-        <>
-          <Nav data={data} />
-          <Component
-            {...pageProps}
-            data={data}
-            artPiecesInfo={artPiecesInfo}
-            onToggleFavorite={handleToggleFavorite}
-            handleCommentSubmit={handleCommentSubmit}
-          />
-          <Footer />
-        </>
-      )}
+      <CookieConsent />
+      <title>Galerie: c&apos;est la Vie</title>
+      <Nav data={data} />
+      {console.log(data)}
+      <Component
+        {...pageProps}
+        data={data}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={handleToggleFavorite}
+        handleCommentSubmit={handleCommentSubmit}
+        handleCommentDelete={handleCommentDelete}
+      />
+      <Footer />
     </>
   );
 }
-

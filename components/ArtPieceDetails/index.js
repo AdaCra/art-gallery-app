@@ -1,82 +1,78 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-import FavoriteButton from "../Favorite";
-import Comment from "../Comment";
-import CommentList from "../CommentList";
+import ArtPieceTile from "../ArtPieceTile";
+import styled from "styled-components";
+import ColourGrid from "./ColourPallette";
+import DetailsPageHeading from "./Heading";
+import ArtworkInfo from "./DetailInfo";
+import CommentSection from "./CommentSection";
 
 export default function ArtPieceDetails({
   currentArt,
   artPiecesInfo,
   onToggleFavorite,
   handleCommentSubmit,
+  handleCommentDelete,
 }) {
-  const router = useRouter();
-
   return (
-    <>
-      <h2>Art Details</h2>
-      <section>
-        <section>
-          <button onClick={() => router.back()}>Go Back</button>
-          <button onClick={() => router.push("/grid")}>Go to List</button>
-        </section>
-        <div style={{ display: "flex" }}>
-          <Image
-            src={currentArt.imageSource}
-            alt={currentArt.name}
-            width={currentArt.dimensions.width / 4}
-            height={currentArt.dimensions.height / 4}
-          />
-          <FavoriteButton
+    <DetailsDisplayContainer>
+      <DetailsPageHeading />
+
+      <DetailsSection>
+        <ImageToTextDivider>
+          <ArtPieceTile
+            pieces={currentArt}
             onToggleFavorite={onToggleFavorite}
-            slug={currentArt.slug}
             artPiecesInfo={artPiecesInfo}
           />
-          <div>
-            {/* {console.log(currentArt.colors)} */}
-            {currentArt.colors.map((color, index) => {
-              return (
-                <div
-                  key={index}
-                  style={{
-                    backgroundColor: color,
-                    width: "50px",
-                    height: "50px",
-                    priority: true,
-                  }}
-                ></div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="artPieceDetails__information">
-          <h4>
-            Name of artwork:&nbsp;<em>{currentArt.name}</em>
-          </h4>
-          <h4>
-            Artist:&nbsp;<em>{currentArt.artist}</em>
-          </h4>
-          <h4>
-            Year:&nbsp;<em>{currentArt.year}</em>
-          </h4>
-          <h4>
-            Genre:&nbsp;<em>{currentArt.genre}</em>
-          </h4>
-        </div>
+        </ImageToTextDivider>
+        <ImageToTextDivider>
+          <ArtworkInfo
+            onToggleFavorite={onToggleFavorite}
+            currentArt={currentArt}
+            artPiecesInfo={artPiecesInfo}
+          />
 
-        <section>
-          <h3>Thoughts & Feelings</h3>
-          <Comment
-            slug={currentArt.slug}
+          <br />
+
+          <ColourGrid array={currentArt.colors} />
+
+          <br />
+
+          <CommentSection
+            currentArt={currentArt}
             handleCommentSubmit={handleCommentSubmit}
+            handleCommentDelete={handleCommentDelete}
+            artPiecesInfo={artPiecesInfo}
           />
-          <CommentList 
-          slug={currentArt.slug}
-          artPiecesInfo={artPiecesInfo}
-          title={currentArt.name}
-          />
-        </section>
-      </section>
-    </>
+        </ImageToTextDivider>
+      </DetailsSection>
+    </DetailsDisplayContainer>
   );
 }
+
+const DetailsDisplayContainer = styled.section`
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: calc(100vh - 280px);
+  text-align: center;
+`;
+
+const ImageToTextDivider = styled.div`
+  position: relative;
+  text-align: left;
+  padding: 0 4%;
+  width: 50%;
+  @media (max-width: 710px) {
+    width: 100%;
+  }
+`;
+
+const DetailsSection = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 710px) {
+    flex-direction: column;
+  }
+`;
