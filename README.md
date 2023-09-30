@@ -84,7 +84,7 @@ Download and extract the [Resources](#resources) into your project folder.
 - [x] Create the component `ArtPieces` to render a list
 - [x] `ArtPieces` props: `pieces`
 - [x] Create the component `ArtPiecePreview`
-- [] `ArtPiecePreview` props: `image`, `title`, `artist`
+- [x] `ArtPiecePreview` props: `image`, `title`, `artist`
 - [x] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
@@ -138,8 +138,8 @@ Download and extract the [Resources](#resources) into your project folder.
 - [x] Adapt the page `pages/index`: rename the function to `SpotlightPage` and have it render only the `Spotlight` component
 - [x] Create the page `pages/art-pieces/index` that renders the `ArtPieces` component
 - [x] Create the component `Navigation` that renders all navigation links
-- [ ] Create the component `Layout` that renders the `Navigation` component
-- [ ] Apply the `Layout` component in `pages/_app`
+- [x] Create the component `Layout` that renders the `Navigation` component
+- [x] Apply the `Layout` component in `pages/_app`
 - [ ] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
@@ -248,20 +248,20 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] The detail view has a list of comments for this art piece with the headline "Comments" 🖼️
-- [ ] Each comment's text is displayed 🖼️
-- [ ] Each comment's date and time is displayed 🖼️
+- [x] The detail view has a list of comments for this art piece with the headline "Comments" 🖼️
+- [x] Each comment's text is displayed 🖼️
+- [x] Each comment's date and time is displayed 🖼️
 - [x] The detail view has an input field to write a comment 🖼️
 - [x] The detail view has a submit button labeled "Send" 🖼️
 - [x] After submitting the form, the comment is appended to the list of comments 🖼️
 
 #### Tasks
 
-- [ ] Store comments per art piece in the `artPiecesInfo` state
-- [ ] Create a `CommentForm` component
-- [ ] `CommentForm` props: `onSubmitComment`
-- [ ] Create a `Comments` components
-- [ ] `Comments` props: `comments`
+- [x] Store comments per art piece in the `artPiecesInfo` state
+- [x] Create a `CommentForm` component
+- [x] `CommentForm` props: `onSubmitComment`
+- [x] Create a `Comments` components
+- [x] `Comments` props: `comments`
 - [ ] All acceptance criteria marked with 🖼️ are covered by component testing
 
 ---
@@ -278,12 +278,12 @@ Download and extract the [Resources](#resources) into your project folder.
 
 #### Acceptance Criteria
 
-- [ ] All favorite flags and comments added to art pieces are persisted across browser reloads
+- [x] All favorite flags and comments added to art pieces are persisted across browser reloads
 
 #### Tasks
 
-- [ ] Install the package `use-local-storage-state`
-- [ ] Use the `useLocalStorageState` hook to store the `artPiecesInfo` state
+- [x] Install the package `use-local-storage-state`
+- [x] Use the `useLocalStorageState` hook to store the `artPiecesInfo` state
 
 To use the `useImmer` hook to mutate the `artPiecesInfo` state, implement this example to combine both.
 
@@ -344,7 +344,7 @@ export default function App({ Component, pageProps }) {
 #### Acceptance Criteria
 
 - [x] The art piece detail page shows a list of all colors used in the image
-- [ ] The colors may be displayed as circles, squares, ...
+- [x] The colors may be displayed as circles, squares, ...
 
 #### Tasks
 
