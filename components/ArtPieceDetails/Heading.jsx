@@ -17,7 +17,6 @@ export default function DetailsPageHeading() {
 
   return (
     <div>
-      <h2>Art Details</h2>
       <HeadingLinks>
         <SkimButton onClick={() => router.back()} $mobile={isMobile}>
           &#9001;&#9001; Back
@@ -31,7 +30,7 @@ export default function DetailsPageHeading() {
 }
 
 const HeadingLinks = styled.section`
-  margin: 0 0 20px;
+  margin: 20px 0 0;
   padding: 0;
   width: 100vw;
   display: flex;

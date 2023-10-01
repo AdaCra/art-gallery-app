@@ -17,14 +17,14 @@ export default function ArtPieceDetails({
       <DetailsPageHeading />
 
       <DetailsSection>
-        <ImageToTextDivider>
+        <ImageDivider>
           <ArtPieceTile
             pieces={currentArt}
             onToggleFavorite={onToggleFavorite}
             artPiecesInfo={artPiecesInfo}
           />
-        </ImageToTextDivider>
-        <ImageToTextDivider>
+        </ImageDivider>
+        <TextDivider>
           <ArtworkInfo
             onToggleFavorite={onToggleFavorite}
             currentArt={currentArt}
@@ -43,7 +43,7 @@ export default function ArtPieceDetails({
             handleCommentDelete={handleCommentDelete}
             artPiecesInfo={artPiecesInfo}
           />
-        </ImageToTextDivider>
+        </TextDivider>
       </DetailsSection>
     </DetailsDisplayContainer>
   );
@@ -56,22 +56,26 @@ const DetailsDisplayContainer = styled.section`
   height: calc(100vh - 280px);
   text-align: center;
 `;
-
-const ImageToTextDivider = styled.div`
+const TextDivider = styled.div`
   position: relative;
   text-align: left;
   padding: 0 4%;
   width: 50%;
+
   @media (max-width: 710px) {
     width: 100%;
   }
+`;
+
+const ImageDivider = styled(TextDivider)`
+  margin-top: 40px;
 `;
 
 const DetailsSection = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   @media (max-width: 710px) {
     flex-direction: column;
   }

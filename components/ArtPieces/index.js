@@ -29,16 +29,17 @@ export default function ArtPieceTile({
       </ImageBox>
       <InfoBox>
         <div>
-          <InfoKey>Title&nbsp;&nbsp;:</InfoKey>
           <InfoContent> {pieces.name}</InfoContent>
         </div>
         <div>
-          <InfoKey>Artist&nbsp;&nbsp;:</InfoKey>
           <InfoContent> {correctedName}</InfoContent>
         </div>
         <div>
-          <InfoKey>Year&nbsp;:</InfoKey>
-          <InfoContent> {pieces.year}</InfoContent>
+          {pieces.year === "unknown" ? (
+            ""
+          ) : (
+            <InfoContent> {pieces.year}</InfoContent>
+          )}
         </div>
       </InfoBox>
       <FavoriteButton
@@ -97,16 +98,9 @@ const NextImage = styled(Image)`
   cursor: pointer;
 `;
 
-const InfoKey = styled.p`
-  display: inline;
-  padding-right: 10px;
-  font-weight: light;
-  @media (max-width: 410px) {
-    padding-right: 5px;
-  }
-`;
 const InfoContent = styled.h3`
   display: inline;
   font-weight: bold;
   font-style: italic;
+  text-decoration: none;
 `;

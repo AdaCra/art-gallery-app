@@ -41,22 +41,19 @@ export default function About() {
                     In a detail page showing all relevant data regarding an
                     individual piece of art.
                   </AboutListItem>
-                </AboutTextOL>                
-              </AboutListItem>
-
-
-              <AboutListItem>
-                Manage Cookies by:
-              </AboutListItem>
-                <AboutTextOL>
-              <AboutListItem>
-                Allowing users to save manage a favourite artworks list.
-              </AboutListItem>
-              <AboutListItem>
-                Letting users to save personal comments, ideas or reactions to
-                specific artworks within local storage.
-              </AboutListItem>
                 </AboutTextOL>
+              </AboutListItem>
+
+              <AboutListItem>Manage Cookies by:</AboutListItem>
+              <AboutTextOL>
+                <AboutListItem>
+                  Allowing users to save manage a favourite artworks list.
+                </AboutListItem>
+                <AboutListItem>
+                  Letting users to save personal comments, ideas or reactions to
+                  specific artworks within local storage.
+                </AboutListItem>
+              </AboutTextOL>
             </AboutTextUL>
           </AboutProjectDiv>
           <br />
@@ -72,22 +69,21 @@ export default function About() {
             </p>
           </AboutProjectDiv>
           <br />
+          <ContactBar />
         </AboutTextSection>
       </TextWrapper>
-      <ContactBar />
     </>
   );
 }
 
 const TextWrapper = styled.div`
+  margin-bottom: 150px;
   padding: 0 20%;
 `;
 
 const AboutTextSection = styled.section`
   padding: 0;
-  display: flex;
   height: 70vh;
-  flex-direction: column;
   justify-content: space-evenly;
 `;
 
@@ -105,5 +101,4 @@ const AboutTextUL = styled.ul`
 const AboutListItem = styled.li`
   padding: 5px;
   margin-bottom: 10px;
-
 `;

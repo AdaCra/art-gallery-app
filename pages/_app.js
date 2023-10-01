@@ -105,7 +105,6 @@ export default function App({ Component, pageProps }) {
       <CookieConsent />
       <title>Galerie: c&apos;est la Vie</title>
       <Nav data={data} />
-      {console.log(data)}
       <Component
         {...pageProps}
         data={data}

@@ -1,10 +1,15 @@
+import styled from "styled-components";
 import Comment from "../Comment";
 import CommentList from "../CommentList";
 
-export default function CommentSection({currentArt, handleCommentSubmit, artPiecesInfo, handleCommentDelete}) {
-   
+export default function CommentSection({
+  currentArt,
+  handleCommentSubmit,
+  artPiecesInfo,
+  handleCommentDelete,
+}) {
   return (
-    <section>
+    <CommentWrapper>
       <h3>Thoughts & Feelings</h3>
       <Comment
         slug={currentArt.slug}
@@ -16,6 +21,10 @@ export default function CommentSection({currentArt, handleCommentSubmit, artPiec
         title={currentArt.name}
         handleCommentDelete={handleCommentDelete}
       />
-    </section>
+    </CommentWrapper>
   );
 }
+
+const CommentWrapper = styled.section`
+  margin-bottom: 70px;
+`;

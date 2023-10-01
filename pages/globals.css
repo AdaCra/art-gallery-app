@@ -125,7 +125,7 @@ h3 {
   color: var(--dm_text_color_main);
   text-decoration: underline;
   text-underline-offset: 5px;
-  @media (max-width: 510px) {
+  @media (max-width: 610px) {
     padding: 10px 0 0;
     font-size: 14px;
   }

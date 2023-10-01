@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function HomePage({data}) {
+export default function HomePage({ data }) {
   return (
     <>
       <Wrapper>
@@ -11,7 +11,6 @@ export default function HomePage({data}) {
         </HeadingDiv>
 
         <Introduction>Where Art enters your life.</Introduction>
-
 
         <h2>Please select which link you wish to go to</h2>
         <LinksContainer>
@@ -33,22 +32,21 @@ const Wrapper = styled.div`
   justify-content: left;
   height: 100%;
   text-align: center;
+  margin-bottom: 100px;
 `;
 
 const SuperSpanHeading = styled.div`
-font-family: "Montserrat", Arial, Helvetica, sans-serif;
-font-size: 20px;
-font-style: italic;
-color: var(--dm_text_color_main);
-@media (max-width: 510px) {
-
-  font-size: 18px;
-}
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--dm_text_color_main);
+  @media (max-width: 510px) {
+    font-size: 18px;
+  }
 `;
 const HeadingDiv = styled.div`
   margin-top: 20vh;
 `;
-
 
 const Introduction = styled.p`
   font-size: 18px;
@@ -58,7 +56,7 @@ const Introduction = styled.p`
 const LinksContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  
 `;
 
 const Link = styled.a`

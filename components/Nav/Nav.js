@@ -9,12 +9,10 @@ export default function Nav({ data }) {
   // State to manage the visibility of the menu on small screens
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-
-
   return (
     <NavWrapper>
       <NavBox>
-        <FlickeringTitle  />
+        <FlickeringTitle />
         <BurgerButton menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
         <NavList $menuIsOpen={menuIsOpen}>
           <MenuBar data={data} menuIsOpen={menuIsOpen} />
@@ -27,7 +25,7 @@ export default function Nav({ data }) {
 const NavWrapper = styled.div`
    {
     position: relative;
-    height: 250px;
+    height: 230px;
   }
 `;
 
@@ -37,14 +35,14 @@ const NavBox = styled.div`
     position: fixed;
     text-align: center;
     background-color: var(--dm_background_base);
-    height: 250px;
+    height: 210px;
     max-width: 100vw;
   }
 `;
 
 const NavList = styled.ul`
   position: absolute;
-  top: 210px;
+  top: 200px;
   width: 100vw;
   display: flex;
   justify-content: space-between;
@@ -55,7 +53,7 @@ const NavList = styled.ul`
 
   @media (max-width: 510px) {
     display: ${({ $menuIsOpen }) => ($menuIsOpen ? "flex" : "none")};
-    top: 250px;
+    top: 200px;
     right: 0;
     width: 150px;
     flex-direction: column;

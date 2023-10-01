@@ -61,8 +61,12 @@ const HeartButtonGrid = styled.button`
   cursor: pointer;
   height: 30px;
   width: 30px;
-  bottom: 30px;
-  right: 20px;
+  bottom: 15px;
+  right: 15px;
+  @media (max-width: 410px) {
+    top: 15px;
+    right: -40px;
+  }
 `;
 const HeartButtonDetail = styled.button`
   position: absolute;

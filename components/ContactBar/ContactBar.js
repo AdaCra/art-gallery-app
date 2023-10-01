@@ -4,12 +4,13 @@ import { copyToClipboard } from "./ContactEmail";
 import styled from "styled-components";
 
 const ContactsWrapper = styled.div`
-  margin: 50px 0;
-  position: fixed;
+  margin: 100px 0;
+  position: relative;
+  height: 100px;
   bottom: 35px;
   display: flex;
   gap: 3%;
-  width: 100vw;
+  width: 100%;
   justify-content: center;
   @media (max-width: 350px) {
     flex-wrap: wrap;

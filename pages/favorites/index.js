@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ArtPieces from "../../components/ArtPieces";
 
 export default function favorites({ data, onToggleFavorite, artPiecesInfo }) {
-  // console.log("artlist from favorites",artPiecesInfo)
   const favoritesList = artPiecesInfo
     .filter((element) => {
       return element.isFavorite === true;
@@ -10,11 +9,9 @@ export default function favorites({ data, onToggleFavorite, artPiecesInfo }) {
     .map((element) => {
       return element.slug;
     });
-  // console.log("favoriteList: ", favoriteslist);
   const onlyFavs = data.filter((element) =>
     favoritesList.includes(element.slug)
   );
-  // console.log(onlyFavourites)
   return (
     <ListDisplaySection>
       <h2>Favourites</h2>
